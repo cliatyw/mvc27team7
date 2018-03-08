@@ -33,9 +33,9 @@
 		});
 	</script>
 	<style>
-	body {
-    background-color: #FFD9EC;
-	} 		
+		body {
+	    background-color: #FFD9EC;
+		} 		
 	</style>
 </head>
 <body>

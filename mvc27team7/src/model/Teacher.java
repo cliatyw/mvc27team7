@@ -1,4 +1,4 @@
-/*[±èµµÈñ]*/
+/*[ê¹€ë„í¬]*/
 package model;
 
 public class Teacher {

@@ -1,15 +1,18 @@
-/*[±èµµÈñ]*/
+/*[ê¹€ë„í¬]*/
 package model;
 
 import model.DriverDao;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.sql.Connection;
+import java.sql.ResultSet;
 
 public class TeacherDao {
 	PreparedStatement statement = null;
 	Connection connection = null;
-	/*teacherÀÇ id, pw¸¦ INSERTÄõ¸®¹®À» ÀÌ¿ëÇÏ¿© Ãß°¡ÇÏ´Â ¸Ş¼Òµå*/
+	ResultSet resultset = null;
+	/*teacherì˜id,pwë¥¼ INSERTì¿¼ë¦¬ë¬¸ì„ ì‚¬ìš©í•˜ì—¬ ì¶”ê°€í•˜ëŠ” ë©”ì†Œë“œ*/
 	public void insertTeacher(Teacher teacher) {	
 		connection = DriverDao.DriverDbConnection();
 				
@@ -28,11 +31,36 @@ public class TeacherDao {
 			if (statement != null) try { statement.close(); } catch(SQLException e) {}
 			if (connection != null) try { connection.close(); } catch(SQLException e) {}
 		}
-	}
-	
-	/*teacher(no, id, name)ÀÇ list¸¦ Á¶È¸ÇÏ´Â ¸Ş¼Òµå*/
-	public void selectTeacher() {
+	}	
+	/*teacher(no,id,pw)ì˜ ì „ì²´listë¥¼ ì¡°íšŒí•˜ëŠ” ë©”ì†Œë“œë¡œì¨ teacherì˜ no,id,pwì˜ ê°’ì„ ë‹´ì€ listë°°ì—´ì„ ë¦¬í„´í•œë‹¤*/
+	public ArrayList<Teacher> selectTeacherList() {
+		connection = DriverDao.DriverDbConnection();
+		ArrayList<Teacher> list = new ArrayList();
 		
+		String sql = "SELECT *FROM teacher ORDER BY teacher_no ASC";
+		
+		try {
+			statement = connection.prepareStatement(sql);
+			resultset = statement.executeQuery();
+			
+			while(resultset.next()) {
+				Teacher teacher = new Teacher();
+				teacher.setTeacherNo(resultset.getInt("teacher_no"));
+				teacher.setTeacherId(resultset.getString("teacher_id"));
+				teacher.setTeacherPw(resultset.getString("teacher_pw"));
+				System.out.println(resultset.getInt("teacher_no"));
+				System.out.println(resultset.getString("teacher_id"));
+				System.out.println(resultset.getString("teacher_pw"));
+				
+				list.add(teacher);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (statement != null) try { statement.close(); } catch(SQLException e) {}
+			if (connection != null) try { connection.close(); } catch(SQLException e) {}
+			if (resultset != null) try { resultset.close(); } catch(SQLException e) {}
+		} return list;
 	}
 	
 }

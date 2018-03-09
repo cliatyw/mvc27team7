@@ -20,21 +20,21 @@
 		</tr>
 	</thead>
 	<tbody>
-	<%
-	/*list조회 메소드 호출후 리턴값(teacher의 no,id,pw)을 list에 담는다 */
-	TeacherDao teacherdao = new TeacherDao();
-	ArrayList<Teacher> list = teacherdao.selectTeacherList();
-	
-	for(Teacher teacher : list) {
-	%>
-		<tr>
-			<td><%= teacher.getTeacherNo() %></td>
-			<td><%= teacher.getTeacherId() %></td>
-			<td><%= teacher.getTeacherPw() %></td>
-		</tr>
-	<%
-	}
-	%>
+		<%
+		/*list조회 메소드 호출후 리턴값(teacher의 no,id,pw)을 list에 담는다 */
+		TeacherDao teacherdao = new TeacherDao();
+		ArrayList<Teacher> list = teacherdao.selectTeacherList();
+		
+		for(Teacher teacher : list) {
+		%>
+			<tr>
+				<td><%= teacher.getTeacherNo() %></td>
+				<td><%= teacher.getTeacherId() %></td>
+				<td><%= teacher.getTeacherPw() %></td>
+			</tr>
+		<%
+		}
+		%>
 	</tbody>
 	</table>
 </body>

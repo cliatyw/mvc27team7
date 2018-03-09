@@ -9,14 +9,15 @@ import java.util.ArrayList;
 public class EmployeeDao {
 	private Connection connection = null;
 	private PreparedStatement preparedStatement = null;
-	private DriverDao driverDao = null;
-	/*
+	
+	/**
 	 * Employee클래스를 매개변수로 받아 db에 삽입하는 메서드
+	 * @param employee
 	 */
 	public void insertEmployee(Employee employee) {
-		driverDao = new DriverDao();
+		
 		String sql = "INSERT INTO employee (employee_no, employee_id, employee_pw) VALUES (NULL, ?, ?)";
-		connection = driverDao.DriverDbConnection();
+		connection = DriverDao.DriverDbConnection();
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 
@@ -33,12 +34,17 @@ public class EmployeeDao {
 			if (connection != null) try { connection.close(); } catch(SQLException e) {}
 		}
 	}
+	/**
+	 * 
+	 * @return
+	 */
 	public ArrayList<Employee> selectEmployee() {
-		driverDao = new DriverDao();
+		
 		String sql = "SELECT employee_id AS employeeId, employee_pw AS employeePw FROM employee";
-		connection = driverDao.DriverDbConnection();
+		connection = DriverDao.DriverDbConnection();
 		try {
 			preparedStatement = connection.prepareStatement(sql);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

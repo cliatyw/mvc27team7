@@ -6,10 +6,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DriverDao {
-	/*
+
+	/**
 	 * db연결하는 매서드
+	 * @return connection
 	 */
-	public Connection DriverDbConnection() {
+	public static Connection DriverDbConnection() {
 		Connection connection = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");

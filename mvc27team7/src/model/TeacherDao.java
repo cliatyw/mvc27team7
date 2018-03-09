@@ -11,8 +11,7 @@ public class TeacherDao {
 	Connection connection = null;
 	/*teacher의 id, pw를 INSERT쿼리문을 이용하여 추가하는 메소드*/
 	public void insertTeacher(Teacher teacher) {	
-		DriverDao driverdao = new DriverDao();
-		connection = driverdao.DriverDbConnection();
+		connection = DriverDao.DriverDbConnection();
 				
 		String sql = "INSERT INTO teacher(teacher_id, teacher_pw)VALUES (?, ?)";
 		
@@ -30,4 +29,10 @@ public class TeacherDao {
 			if (connection != null) try { connection.close(); } catch(SQLException e) {}
 		}
 	}
+	
+	/*teacher(no, id, name)의 list를 조회하는 메소드*/
+	public void selectTeacher() {
+		
+	}
+	
 }

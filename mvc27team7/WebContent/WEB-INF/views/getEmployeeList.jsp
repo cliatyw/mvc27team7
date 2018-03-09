@@ -7,6 +7,25 @@
 	<title>getEmployeeList.jsp</title>
 </head>
 <body>
-
+	<div>
+		<h1>직원 목록</h1>
+	</div>
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>아이디</th>
+					<th>비밀번호</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>d</td>
+					<td>d</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
 </body>
 </html>

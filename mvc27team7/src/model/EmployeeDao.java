@@ -3,12 +3,14 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class EmployeeDao {
 	private Connection connection = null;
 	private PreparedStatement preparedStatement = null;
+	private ResultSet resultSet = null;
 	
 	/**
 	 * Employee를 매개변수로하여 값들을 삽입하는 매서드
@@ -16,8 +18,10 @@ public class EmployeeDao {
 	 */
 	public void insertEmployee(Employee employee) {
 		
-		String sql = "INSERT INTO employee (employee_no, employee_id, employee_pw) VALUES (NULL, ?, ?)";
 		connection = DriverDao.DriverDbConnection();
+		
+		String sql = "INSERT INTO employee (employee_no, employee_id, employee_pw) VALUES (NULL, ?, ?)";
+		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 
@@ -40,14 +44,28 @@ public class EmployeeDao {
 	 */
 	public ArrayList<Employee> selectEmployee() {
 		
-		String sql = "SELECT employee_id AS employeeId, employee_pw AS employeePw FROM employee";
 		connection = DriverDao.DriverDbConnection();
+		
+		ArrayList<Employee> list = new ArrayList<>();
+		String sql = "SELECT employee_id AS employeeId, employee_pw AS employeePw FROM employee ORDER BY employee_no ASC";
+		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()){
+				Employee employee = new Employee();
+				employee.setEmployeeId(resultSet.getString("employeeId"));
+				employee.setEmployeePw(resultSet.getString("employeePw"));
+				list.add(employee);
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			if (preparedStatement != null) try { preparedStatement.close(); } catch(SQLException e) {}
+			if (connection != null) try { connection.close(); } catch(SQLException e) {}
 		}
-		return null;
+		return list;
 	}
 }

@@ -21,7 +21,12 @@ public class AddEmployeeController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		/*  
+		* 1.request처리  
+		* 2.모델dao호출  
+		* 3.다른 컨트롤러 호출  
+		*/  
+
 		String employeeId = request.getParameter("employeeId");
 		String employeePw = request.getParameter("employeePw");
 		

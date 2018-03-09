@@ -1,4 +1,4 @@
-/*[√÷ªÛøÌ]*/
+/*[ÏµúÏÉÅÏö±]*/
 package model;
 
 import java.sql.Connection;
@@ -21,12 +21,12 @@ public class StudentDao {
 			statement.setString(2, student.getStudentPw());
 			statement.executeUpdate();			
 			
-			} catch (SQLException e) {
-				e.printStackTrace();
-			
-			} finally {
-				if (statement != null) try { statement.close(); } catch(SQLException ex) {}
-				if (connection != null) try { connection.close(); } catch(SQLException ex) {}
-			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		
+		} finally {
+			if (statement != null) try { statement.close(); } catch(SQLException ex) {}
+			if (connection != null) try { connection.close(); } catch(SQLException ex) {}
 		}
+	}
 }

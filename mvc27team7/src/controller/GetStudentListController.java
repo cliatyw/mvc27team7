@@ -1,3 +1,4 @@
+/*[ÏµúÏÉÅÏö±]*/
 package controller;
 
 import java.io.IOException;
@@ -13,10 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/getStudentList.csu")
 public class GetStudentListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//request...
-		//guestdao
-		//requestø° º”º∫ √ﬂ∞°
-		//forward
-		request.getRequestDispatcher("/WEB-INF/views/getStudentList.jsp").forward(request, response);
+	request.getRequestDispatcher("/WEB-INF/views/getStudentList.jsp").forward(request, response);
 	}
 }

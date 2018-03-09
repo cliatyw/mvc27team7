@@ -26,11 +26,11 @@ public class AddStudentController extends HttpServlet {
 		String studentId = request.getParameter("studentId");
 		String studentPw = request.getParameter("studentPw");
 		
-		this.student = new Student();
+		student = new Student();
 		student.setStudentId(studentId);
 		student.setStudentPw(studentPw);
 		
-		this.dao = new StudentDao();
+		dao = new StudentDao();
 		dao.insertStudent(student);
 		response.sendRedirect("/mvc27team7/getStudentList.csu");
 		

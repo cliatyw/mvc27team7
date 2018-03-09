@@ -2,25 +2,30 @@
 package model;
 
 public class Student {
-	private int StudentNo;
-	private String StudentId;
-	private String StudentPw;
+	private int studentNo;
+	private String studentId;
+	private String studentPw;
+	
+	
 	public int getStudentNo() {
-		return StudentNo;
+		return studentNo;
 	}
 	public void setStudentNo(int studentNo) {
-		StudentNo = studentNo;
+		this.studentNo = studentNo;
 	}
 	public String getStudentId() {
-		return StudentId;
+		return studentId;
 	}
 	public void setStudentId(String studentId) {
-		StudentId = studentId;
+		this.studentId = studentId;
 	}
 	public String getStudentPw() {
-		return StudentPw;
+		return studentPw;
 	}
 	public void setStudentPw(String studentPw) {
-		StudentPw = studentPw;
+		this.studentPw = studentPw;
 	}
+
+
+	
 }

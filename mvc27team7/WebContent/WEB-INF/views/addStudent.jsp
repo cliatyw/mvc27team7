@@ -12,7 +12,6 @@
 	<style>
 		body{padding: 0; margin: 0; background-color: #efefef !important;}
 		.panel{margin-botton:0 !important;}
-		.has-warning, .has-error, .has-success 
 		h2{text-align: center}
 	</style>
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -22,7 +21,7 @@
 				if ($('#studentId').val().length < 4) {
 					$("#idHelper").text("아이디를 4자 이상 적어주세요");
 				} else {
-					$("#idHelper").text("");
+					$("#idHelper").text(""); 
 				}
 			});
 			$('#studentPw').on('keyup', function() {
@@ -60,21 +59,21 @@
 			<form action="<%=request.getContextPath()%>/addStudent.csu" id="myform" method = "post">
 				<div class="panel panel-default">
 					<div class="panel-body form-horizontal">
-						<div class="form-group">
+						<div class="form-group has-success">
 							<label class="col-sm-4 control-label" for="studentId">STUDENT ID</label>
 							<div class="col-sm-8">
 								<input type="text" name="studentId" id="studentId" class="form-control" placeholder="id">
 								<div id = "idHelper">아이디를 4자 이상 적어주세요</div>
 							</div>
 						</div>
-  						<div class="form-group">
+  						<div class="form-group has-success">
   							<label class="col-sm-4 control-label" for="studentPd">STUDENT PW</label>
 							<div class="col-sm-8">
 								<input class="form-control" name="studentPw" id="studentPw" type="password" placeholder="PW">							
 								<div id = "pwHelper">비밀번호를 4자 이상 적어주세요</div>
 							</div>
 						</div>	
-						<div class="form-group">
+						<div class="form-group has-success">
   							<label class="col-sm-4 control-label" for="inputEmail">PW CHECK</label>
 							<div class="col-sm-8">
 								<input class="form-control" id="studentPwCheck" type="password" placeholder="PW CHECK" >

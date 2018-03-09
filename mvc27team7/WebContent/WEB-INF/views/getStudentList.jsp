@@ -1,13 +1,43 @@
 <!-- [최상욱] -->
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@page import="model.Student"%>
+<%@page import="java.util.*"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!DOCTYPE>
 <html>
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>getStudentList.jsp</title>
 </head>
-<body>
+	<% 
+	ArrayList<Student>list = (ArrayList<Student>)request.getAttribute("list");
+	%> 
 
-</body>
+	<body>
+		<table class="table table-striped table-bordered table-hover">
+		<caption>StudentList</caption>
+			<thead>
+				<tr>
+					<th>studentNo</th>
+					<th>studentId</th>
+					<th>studentPw</th>
+				</tr>
+			</thead>
+			<% 
+			for(Student student : list){ 
+			%> 
+			<tbody>
+				<tr class="success">
+					<td><%=student.getStudentNo()%></td>
+					<td><%=student.getStudentId()%></td>
+					<td><%=student.getStudentPw()%></td>
+				</tr>
+			</tbody>
+			<% 
+			} 
+			%> 
+			
+		</table>
+	</body>
 </html>
+

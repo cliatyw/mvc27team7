@@ -6,12 +6,15 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DriverDao {
+	/*
+	 * db연결하는 매서드
+	 */
 	public Connection DriverDbConnection() {
 		Connection connection = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
-			String jdbcDriver = "jdbc:mysql://localhost:3306/root?useUnicode=true&characterEncoding=euckr";
+			String jdbcDriver = "jdbc:mysql://localhost:3306/mvc?useUnicode=true&characterEncoding=euckr";
 			String dbUser = "root";
 			String dbPass = "java0000";
 

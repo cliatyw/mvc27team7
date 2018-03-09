@@ -8,11 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Employee;
 import model.EmployeeDao;
 
 @WebServlet("/addEmployee.kks")
 public class AddEmployeeController extends HttpServlet {
-	private EmployeeDao employeeDao;
+	private EmployeeDao employeeDao = null;
+	private Employee employee = null;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/views/addEmployee.jsp").forward(request, response);
@@ -26,10 +28,15 @@ public class AddEmployeeController extends HttpServlet {
 		 */
 		String employeeId = request.getParameter("employeeId");
 		String employeePw = request.getParameter("employeePw");
-		//guest setter »£√‚
-		//dao
 		
-		response.sendRedirect("/getEmployeeController.kks");
+		this.employee = new Employee();
+		employee.setEmployeeId(employeeId);
+		employee.setEmployeePw(employeePw);
+		
+		this.employeeDao = new EmployeeDao();
+		employeeDao.insertEmployee(this.employee);
+		
+		response.sendRedirect(request.getContextPath() + "/getEmployeeController.kks");
 	}
 
 }

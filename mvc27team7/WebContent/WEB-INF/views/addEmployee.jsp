@@ -9,6 +9,7 @@
 	<link href="<%=request.getContextPath() %>/kks/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/kks/css/font-awesome.min.css" media="screen" title="no title">
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/kks/css/style.css" media="screen" title="no title">
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script>
@@ -16,21 +17,21 @@
 			/* 폼 유효성 검사
 			id 4자 이상, pw 4자 이상, 비밀번호 체크
 			폼 submit */
-			$("#employeeId").on("keyup",function(){
+			$("#employeeId").blur(function(){
 				if($("#employeeId").val().length < 4){
 					$("#idHelper").text("아이디는 4글자 이상입니다.");
 				}else{
 					$("#idHelper").text("");
 				}
 			});
-			$("#employeePw").on("keyup",function(){
+			$("#employeePw").blur(function(){
 				if($("#employeePw").val().length < 4){
 					$("#pwHelper").text("비밀번호는 4글자 이상입니다.");
 				}else{
 					$("#pwHelper").text("");
 				}
 			});
-			$("#employeePwCheck").on("keyup",function(){
+			$("#employeePwCheck").blur(function(){
 				if($("#employeePwCheck").val() !== $("#employeePw").val()){
 					$("#pwCheckHelper").text("비밀번호를 확인해주세요.");
 				}else{

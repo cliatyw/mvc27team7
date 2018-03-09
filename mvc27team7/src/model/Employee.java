@@ -2,31 +2,31 @@
 package model;
 
 public class Employee {
-	private int EmployeeNo;
-	private String EmployeeId;
-	private String EmployeePw;
+	private int employeeNo;
+	private String employeeId;
+	private String employeePw;
 	
 	public int getEmployeeNo() {
-		return EmployeeNo;
+		return employeeNo;
 	}
 	public void setEmployeeNo(int employeeNo) {
-		EmployeeNo = employeeNo;
+		this.employeeNo = employeeNo;
 	}
 	public String getEmployeeId() {
-		return EmployeeId;
+		return employeeId;
 	}
 	public void setEmployeeId(String employeeId) {
-		EmployeeId = employeeId;
+		this.employeeId = employeeId;
 	}
 	public String getEmployeePw() {
-		return EmployeePw;
+		return employeePw;
 	}
 	public void setEmployeePw(String employeePw) {
-		EmployeePw = employeePw;
-	}
-	@Override
-	public String toString() {
-		return "Employee [EmployeeNo=" + EmployeeNo + ", EmployeeId=" + EmployeeId + ", EmployeePw=" + EmployeePw + "]";
+		this.employeePw = employeePw;
 	}
 	
+	@Override
+	public String toString() {
+		return "Employee [employeeNo=" + employeeNo + ", employeeId=" + employeeId + ", employeePw=" + employeePw + "]";
+	}
 }

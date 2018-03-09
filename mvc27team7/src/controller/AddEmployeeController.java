@@ -29,12 +29,12 @@ public class AddEmployeeController extends HttpServlet {
 		String employeeId = request.getParameter("employeeId");
 		String employeePw = request.getParameter("employeePw");
 		
-		this.employee = new Employee();
+		employee = new Employee();
 		employee.setEmployeeId(employeeId);
 		employee.setEmployeePw(employeePw);
 		
-		this.employeeDao = new EmployeeDao();
-		employeeDao.insertEmployee(this.employee);
+		employeeDao = new EmployeeDao();
+		employeeDao.insertEmployee(employee);
 		
 		response.sendRedirect(request.getContextPath() + "/getEmployeeController.kks");
 	}

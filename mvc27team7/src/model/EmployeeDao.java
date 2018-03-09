@@ -47,7 +47,7 @@ public class EmployeeDao {
 		connection = DriverDao.DriverDbConnection();
 		
 		ArrayList<Employee> list = new ArrayList<>();
-		String sql = "SELECT employee_id AS employeeId, employee_pw AS employeePw FROM employee ORDER BY employee_no ASC";
+		String sql = "SELECT employee_no AS employeeNo, employee_id AS employeeId, employee_pw AS employeePw FROM employee ORDER BY employee_no ASC";
 		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
@@ -55,6 +55,7 @@ public class EmployeeDao {
 			
 			while(resultSet.next()){
 				Employee employee = new Employee();
+				employee.setEmployeeNo(resultSet.getInt("employeeNo"));
 				employee.setEmployeeId(resultSet.getString("employeeId"));
 				employee.setEmployeePw(resultSet.getString("employeePw"));
 				list.add(employee);

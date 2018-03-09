@@ -1,5 +1,11 @@
 <!-- [±è±â¼º] -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.Employee" %>
+<%
+	ArrayList<Employee> list = new ArrayList<>();
+	list = (ArrayList)request.getAttribute("employeeList");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,10 +25,16 @@
 				</tr>
 			</thead>
 			<tbody>
+				<% 
+					for(Employee employee : list){
+				%>
 				<tr>
-					<td>d</td>
-					<td>d</td>
+					<td><%=	employee.getEmployeeId() %></td>
+					<td><%= employee.getEmployeePw() %></td>
 				</tr>
+				<%
+					}
+				%>
 			</tbody>
 		</table>
 	</div>

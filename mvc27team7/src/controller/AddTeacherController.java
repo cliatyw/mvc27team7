@@ -7,9 +7,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Teacher;
+import model.TeacherDao;
 
 @WebServlet("/addTeacher.kdh")
-public class TeacherController extends HttpServlet {
+public class AddTeacherController extends HttpServlet {
+	private TeacherDao teacherdao;
 	//teacher 입력 폼요청
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		request.getRequestDispatcher("/WEB-INF/views/addTeacher.jsp").forward(request,response);
@@ -18,7 +21,14 @@ public class TeacherController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//1. request처리
 		//2. 모델(DAO) 호출
-		//3. redirect
+		//3. list redirect
+		String teacherId = request.getParameter("teacherId");
+		String teacherPw = request.getParameter("teacherPw");
+		Teacher teacher = new Teacher();
+		//guest setter호출
+		this.teacherdao = new TeacherDao();
+		teacherdao.insertTeacher(teacher);
+		/*response.sendRedirect("/getTeacherList.kdh");*/
 	}
 
 }

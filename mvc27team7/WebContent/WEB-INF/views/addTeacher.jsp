@@ -22,19 +22,17 @@
 					$("#idHelper").text("이름은 4자 이상");
 				}else if($(".pw").val().length<4){
 					$("#pwHelper").text("비밀번호 4자 이상");
-				}else {
-					if($(".Check").val()==$(".Pw").val()){
-					$("#form").submit();
-					}else{
-						$("#checkHelper").text("비밀번호 일치 재확인");
+				}else if($(".check").val()!=$(".pw").val()){
+					$("#checkHelper").text("비밀번호 일치 재확인");																				
+				}else{
+					$("#form").submit();				
 					}
-				}
 			});
 		});
 	</script>
 	<style>
 		body {
-	    background-color: #FFD9EC;
+	    	background-color: #FFD9EC;
 		} 		
 	</style>
 </head>

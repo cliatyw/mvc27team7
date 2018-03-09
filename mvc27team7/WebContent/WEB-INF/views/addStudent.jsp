@@ -40,10 +40,10 @@
 
 		});
 		$("#btn").click(function() {
-			if ($("#idHelper").val()=="" && $("#pwHelper").val()=="" && $("#pwcheckHelper").val()=="비밀번호가 일치합니다.") {
+			if($("#studentId").val().length >= 4 && $("#studentPw").val().length >= 4 && $("#studentPwCheck").val() === $("#studentPw").val()){
 				$("#myform").submit();
-			} else  {
-				$("#check").text("확인해주세요");
+			} else {
+			return;
 			}
 		});
 	});
@@ -55,31 +55,31 @@
 		<div class="col-md-3" ></div>
 		
 			<div class="col-sm-6">
-			<form action="<%=request.getContextPath()%>/addStudent.csu" id="myform">
+			<form action="<%=request.getContextPath()%>/addStudent.csu" id="myform" method = "post">
 				<div class="panel panel-default">
 					<div class="panel-body form-horizontal">
 						<div class="form-group">
-							<label class="col-sm-2 control-label" for="studentId">studentid</label>
-							<div class="col-sm-6">
-								<input type="text" name="studentId" id="studentId" class="form-control" placeholder="id">
+							<label class="col-sm-4 control-label" for="studentId">STUDENT ID</label>
+							<div class="col-sm-8">
+								<input type="text" name="studentId" id="studentId" class="form-control" placeholder="id" >
 							</div>
-							<span id = "idHelper"></span>
+							<span id = "idHelper">  아이디를 4자 이상 적어주세요</span>
 						</div>
 	  						<div class="form-group">
-	  							<label class="col-sm-2 control-label" for="studentPd">STUDENT PW</label>
-							<div class="col-sm-6">
-								<input class="form-control" id="studentPw" type="password" placeholder="PW" name="password" >
+	  							<label class="col-sm-4 control-label" for="studentPd">STUDENT PW</label>
+							<div class="col-sm-8">
+								<input class="form-control" id="studentPw" type="password" placeholder="PW" name="studentPw" >
 							</div>
-							<span id = "pwHelper"></span>
+							<span id = "pwHelper">  비밀번호를 4자 이상 적어주세요</span>
 						</div>	
 						<div class="form-group">
-	  							<label class="col-sm-2 control-label" for="inputEmail">PW CHECK</label>
-							<div class="col-sm-6">
+	  							<label class="col-sm-4 control-label" for="inputEmail">PW CHECK</label>
+							<div class="col-sm-8">
 								<input class="form-control" id="studentPwCheck" type="password" placeholder="PW 재입력" value="" >
 								<span id = "pwcheckHelper"></span>
 							</div>
 						</div>
-						<button id = "btn" class="btn btn-primary" type="submit">회원가입</button>
+						<button id = "btn" class="btn btn-primary" type="button">회원가입</button>
 						<span id = "check"></span>
 					</div>
 				</div>

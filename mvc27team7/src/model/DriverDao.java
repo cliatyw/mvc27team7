@@ -1,4 +1,4 @@
-/*[±è±â¼º]*/
+/*[ê¹€ê¸°ì„±]*/
 package model;
 
 import java.sql.Connection;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class DriverDao {
 
 	/**
-	 * db¿¬°áÇÏ´Â ¸Å¼­µå
+	 * dbì—°ê²°í•˜ëŠ” ë§¤ì„œë“œ
 	 * @return connection
 	 */
 	public static Connection DriverDbConnection() {

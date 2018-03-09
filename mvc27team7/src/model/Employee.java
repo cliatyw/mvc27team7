@@ -1,4 +1,4 @@
-/*[��⼺]*/
+/*[김기성]*/
 package model;
 
 public class Employee {

@@ -1,3 +1,4 @@
+/*[ê¹€ê¸°ì„±]*/
 package controller;
 
 import java.io.IOException;
@@ -10,9 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/getEmployeeController.kks")
 public class GetEmployeeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//Dao È£Ãâ
-		//request¿¡ ¼Ó¼º Ãß°¡
-		//v ·Î Æ÷¿öµå
+		
 		request.getRequestDispatcher("/WEB-INF/views/getEmployeeList.jsp").forward(request, response);
 	}
 

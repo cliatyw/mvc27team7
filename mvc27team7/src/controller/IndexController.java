@@ -1,4 +1,4 @@
-/*[��⼺]*/
+/*[김기성]*/
 package controller;
 
 import java.io.IOException;

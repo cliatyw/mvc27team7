@@ -1,4 +1,4 @@
-/*[±è±â¼º]*/
+/*[ê¹€ê¸°ì„±]*/
 package model;
 
 import java.sql.Connection;
@@ -11,7 +11,7 @@ public class EmployeeDao {
 	private PreparedStatement preparedStatement = null;
 	
 	/**
-	 * EmployeeÅ¬·¡½º¸¦ ¸Å°³º¯¼ö·Î ¹Ş¾Æ db¿¡ »ğÀÔÇÏ´Â ¸Ş¼­µå
+	 * Employeeë¥¼ ë§¤ê°œë³€ìˆ˜ë¡œí•˜ì—¬ ê°’ë“¤ì„ ì‚½ì…í•˜ëŠ” ë§¤ì„œë“œ
 	 * @param employee
 	 */
 	public void insertEmployee(Employee employee) {
@@ -35,8 +35,8 @@ public class EmployeeDao {
 		}
 	}
 	/**
-	 * 
-	 * @return
+	 * dbì— ìˆëŠ” ëª©ë¡ì„ ë¶ˆëŸ¬ì™€ listë¡œ ë¦¬í„´í•˜ëŠ” ë§¤ì„œë“œ
+	 * @return list
 	 */
 	public ArrayList<Employee> selectEmployee() {
 		

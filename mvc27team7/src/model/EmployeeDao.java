@@ -42,7 +42,7 @@ public class EmployeeDao {
 	 * db에 있는 목록을 불러와 list로 리턴하는 매서드
 	 * @return list
 	 */
-	public ArrayList<Employee> selectEmployee() {
+	public ArrayList<Employee> selectEmployeeList() {
 		
 		connection = DriverDao.DriverDbConnection();
 		
@@ -65,6 +65,7 @@ public class EmployeeDao {
 		} finally {
 			if (preparedStatement != null) try { preparedStatement.close(); } catch(SQLException e) {}
 			if (connection != null) try { connection.close(); } catch(SQLException e) {}
+			if (resultSet != null) try { resultSet.close(); } catch(SQLException e) {}
 		}
 		return list;
 	}

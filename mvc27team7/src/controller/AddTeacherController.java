@@ -11,14 +11,12 @@ import model.Teacher;
 import model.TeacherDao;
 
 @WebServlet("/addTeacher.kdh")
-public class AddTeacherController extends HttpServlet {
-	private TeacherDao teacherdao;
-	private Teacher teacher;
+public class AddTeacherController extends HttpServlet {	
 	//teacher 입력 폼요청
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		request.getRequestDispatcher("/WEB-INF/views/addTeacher.jsp").forward(request,response);
 	}
-	//guest 입력
+	//teacher 입력
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
 		String teacherId = request.getParameter("teacherId");
@@ -26,11 +24,11 @@ public class AddTeacherController extends HttpServlet {
 		System.out.println(teacherId+"<--teacherId");
 		System.out.println(teacherPw+"<--teacherPw");
 		
-		this.teacher = new Teacher();
+		Teacher teacher = new Teacher();
 		teacher.setTeacherId(teacherId);
 		teacher.setTeacherPw(teacherPw);
-		//guest setter호출
-		this.teacherdao = new TeacherDao();
+		//teacher setter호출
+		TeacherDao teacherdao = new TeacherDao();
 		teacherdao.insertTeacher(teacher);
 		response.sendRedirect(request.getContextPath()+"/getTeacherList.kdh");
 	}

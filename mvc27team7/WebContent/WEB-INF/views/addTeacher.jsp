@@ -17,23 +17,23 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 	<script>
 		$(document).ready(function(){
-			$("#btn").click(function(){	
-				if($(".id").val().length<4){
+			$("#btn").click(function(){
+				if($("#teacherId").val().length<4){
 					$("#idHelper").text("이름은 4자 이상");
-				}else if($(".pw").val().length<4){
+				}else if($("#teacherPw").val().length<4){
 					$("#pwHelper").text("비밀번호 4자 이상");
-				}else if($(".check").val()!=$(".pw").val()){
+				}else if($("#teacherPwCheck").val()!=$("#teacherPw").val()){
 					$("#checkHelper").text("비밀번호 일치 재확인");																				
 				}else{
-					$("#form").submit();				
-					}
+					$("#form").submit();
+				}
 			});
 		});
 	</script>
 	<style>
 		body {
 	    	background-color: #FFD9EC;
-		} 		
+		}
 	</style>
 </head>
 <body>
@@ -42,9 +42,9 @@
 		<div class="col-lg-4">	
 			<form id="form" method="post" action="<%= request.getContextPath() %>/addTeacher.kdh">
 				<div class="bs-example"  data-example-id="contextual-table">
-				    <table class="table">				       
-				        <tr class="info">
-				          <th scope="row">teacher_id</th>
+					<table class="table">				       
+						<tr class="info">
+							<th scope="row">teacher_id</th>
 				          <td>
 				          	<input type="text" id="teacherId" name="teacherId" class="id"><span id="idHelper"></span>
 				          </td>

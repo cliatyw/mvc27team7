@@ -1,3 +1,4 @@
+/*[±èµµÈñ]*/
 package controller;
 
 import java.io.IOException;
@@ -8,14 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/getTeacherList.kdh")
-public class GetTeacherController extends HttpServlet {
+public class GetTeacherListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//request...
 		//GuestDao
 		//request¿¡ ¼Ó¼ºÃß°¡
 		//forward
-		request.getRequestDispatcher("/WEB-INF/views/getTeacherList.jsp").forward(request,response);
-		
+		request.getRequestDispatcher("/WEB-INF/views/getTeacherList.jsp").forward(request,response);		
 	}
-
 }

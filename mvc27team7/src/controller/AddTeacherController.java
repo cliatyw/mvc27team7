@@ -13,22 +13,25 @@ import model.TeacherDao;
 @WebServlet("/addTeacher.kdh")
 public class AddTeacherController extends HttpServlet {
 	private TeacherDao teacherdao;
+	private Teacher teacher;
 	//teacher 입력 폼요청
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		request.getRequestDispatcher("/WEB-INF/views/addTeacher.jsp").forward(request,response);
 	}
 	//guest 입력
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1. request처리
-		//2. 모델(DAO) 호출
-		//3. list redirect
+			
 		String teacherId = request.getParameter("teacherId");
 		String teacherPw = request.getParameter("teacherPw");
-		Teacher teacher = new Teacher();
+		System.out.println(teacherId+"<--teacherId");
+		System.out.println(teacherPw+"<--teacherPw");
+		
+		this.teacher = new Teacher();
+		teacher.setTeacherId(teacherId);
+		teacher.setTeacherPw(teacherPw);
 		//guest setter호출
 		this.teacherdao = new TeacherDao();
 		teacherdao.insertTeacher(teacher);
-		/*response.sendRedirect("/getTeacherList.kdh");*/
+		response.sendRedirect(request.getContextPath()+"/getTeacherList.kdh");
 	}
-
 }

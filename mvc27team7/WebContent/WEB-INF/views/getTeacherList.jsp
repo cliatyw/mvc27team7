@@ -17,12 +17,14 @@
 			<th>teacher_no</th>
 			<th>teacher_id</th>
 			<th>teacher_pw</th>
+			<th>수정</th> <!-- TeacherDao.updateTeacher() -->
+			<th>삭제</th> <!-- TeacherDao.deleteTeacher() -->
+			<th>ADD TEACHER_ADDR</th><!-- TeacherAddrDao.insertGuestAddr() -->
 		</tr>
 	</thead>
 	<tbody>
 		<%
-		/*list조회 메소드 호출후 리턴값(teacher의 no,id,pw)을 list에 담는다 */
-		TeacherDao teacherdao = new TeacherDao();
+		/*리턴값(teacher의 no,id,pw)을 list에 담는다 */
 		ArrayList<Teacher> list = (ArrayList)request.getAttribute("teacherList");
 				
 		for(Teacher teacher : list) {
@@ -30,7 +32,12 @@
 			<tr>
 				<td><%= teacher.getTeacherNo() %></td>
 				<td><%= teacher.getTeacherId() %></td>
-				<td><%= teacher.getTeacherPw() %></td>
+				<!-- select쿼리문에 비밀번호 값을 가져오지않는다 -->
+				<td>****</td>
+				<!-- modifyTeacher.kdh를 읽어들일 Controller파일생성 -->
+				<td><a href="<%=request.getContextPath() %>/modifyTeacher.kdh"></a>수정</td>
+				<td><a href="/removeTeacher.kdh"></a>삭제</td>
+				<td><a href="/addTeacherAddr.kdh"></a>주소추가</td>
 			</tr>
 		<%
 		}

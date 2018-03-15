@@ -32,7 +32,7 @@ public class TeacherDao {
 			if (connection != null) try { connection.close(); } catch(SQLException e) {}
 		}
 	}	
-	/*teacher(no,id,pw)의 전체list를 조회하는 메소드로써 teacher의 no,id,pw의 값을 담은 list배열을 리턴한다*/
+	/*teacher(no,id)의 전체list를 조회하는 메소드로써 teacher의 no,id의 값을 담은 list배열을 리턴한다*/
 	public ArrayList<Teacher> selectTeacherList() {
 		connection = DriverDao.DriverDbConnection();
 		ArrayList<Teacher> list = new ArrayList();
@@ -47,10 +47,8 @@ public class TeacherDao {
 				Teacher teacher = new Teacher();
 				teacher.setTeacherNo(resultset.getInt("teacher_no"));
 				teacher.setTeacherId(resultset.getString("teacher_id"));
-				teacher.setTeacherPw(resultset.getString("teacher_pw"));
 				System.out.println(resultset.getInt("teacher_no"));
 				System.out.println(resultset.getString("teacher_id"));
-				System.out.println(resultset.getString("teacher_pw"));
 				
 				list.add(teacher);
 			}
@@ -62,5 +60,12 @@ public class TeacherDao {
 			if (resultset != null) try { resultset.close(); } catch(SQLException e) {}
 		} return list;
 	}
-	
+	//수정처리
+	public int updateTeacher(Teacher teacher) {
+		return 0;
+	}
+	//삭제
+	public int deleteTeacher(Teacher teacher) {
+		return 0;
+	}
 }

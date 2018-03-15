@@ -10,25 +10,23 @@ import javax.servlet.http.HttpServletResponse;
 import model.Employee;
 import model.EmployeeDao;
 
-/**
- * Servlet implementation class ModifyEmployeeController
- */
 @WebServlet("/modifyEmployee.kks")
 public class ModifyEmployeeController extends HttpServlet {
 	Employee employee = null;
 	EmployeeDao employeeDao = null;
+	//no값만 받아 수정화면으로 간다.
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String employeeNo = (String)request.getAttribute("employeeNo");
-		request.setAttribute("employeeNo", employeeNo);
-		request.getRequestDispatcher("/WEB-INF/views/modifyEmployee.jsp").forward(request, response);
+		
+		request.getRequestDispatcher("/WEB-INF/views/addEmployee.jsp").forward(request, response);
 	}
-
+	//수정화면에서 수정한 값을 입력하여 수정한 후 리스트화면으로 간다.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		employee = new Employee();
 		employee.setEmployeeId(request.getParameter("employeeId"));
 		employee.setEmployeeNo(Integer.parseInt(request.getParameter("employeeNo")));
 		employee.setEmployeePw(request.getParameter("employeePw"));
 		employeeDao = new EmployeeDao();
+		//employee를 매개변수로 받아 수정하는 매서드를 실행한다.
 		employeeDao.updateEmployee(employee);
 		
 		response.sendRedirect(request.getContextPath() + "/getEmployeeController.kks");

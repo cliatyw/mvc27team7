@@ -14,6 +14,14 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script>
 		$(document).ready(function(){
+			//no값이 null이면 입력처리 아니면 수정처리
+			if($("#employeeNo").val() === "null"){
+				$("#head").text("직원 추가");
+				$("#addEmployeeForm").attr("action", "addEmployee.kks");
+			}else{
+				$("#head").text("직원 수정");
+				$("#addEmployeeForm").attr("action", "modifyEmployee.kks");
+			}
 			/* 폼 유효성 검사
 			id 4자 이상, pw 4자 이상, 비밀번호 체크
 			폼 submit */
@@ -52,10 +60,12 @@
 <body>
 	<article class="container">
 		<div class="page-header">
-			<h1>addEmployee</h1>
+			<h1 id="head"></h1>
 		</div>
 		<div class="col-md-6 col-md-offset-3">
 			<form role="form" id="addEmployeeForm" method="post" action="<%=request.getContextPath() %>/addEmployee.kks">
+				<input type="hidden" id="employeeNo" name="employeeNo" value="<%= request.getParameter("employeeNo") %>">
+				<% System.out.println(request.getParameter("employeeNo")); %>
 				<div class="form-group">
 					<label for="InputId">아이디</label>
 					<input type="text" id="employeeId" name="employeeId" class="form-control">

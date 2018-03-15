@@ -16,6 +16,7 @@
 	</style>
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
+	
 		$(document).ready(function() {
 			$('#studentId').on('keyup', function() {
 				if ($('#studentId').val().length < 4) {

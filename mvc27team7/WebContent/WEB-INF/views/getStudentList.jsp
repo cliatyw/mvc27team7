@@ -21,6 +21,9 @@
 					<th>studentNo</th>
 					<th>studentId</th>
 					<th>studentPw</th>
+					<th>수정</th>
+					<th>삭제</th>
+					<th>add student addr</th>
 				</tr>
 			</thead>
 			<% 
@@ -30,13 +33,15 @@
 				<tr class="success">
 					<td><%=student.getStudentNo()%></td>
 					<td><%=student.getStudentId()%></td>
-					<td><%=student.getStudentPw()%></td>
+					<td>****</td>
+					<td><a href="<%=request.getContextPath()%>/modifyStudent.csu?studentNo=<%=student.getStudentNo()%>">수정</a></td>
+					<td><a href="<%=request.getContextPath()%>/modifyStudent.csu?studentNo=<%=student.getStudentNo()%>">삭제</a></td>
+					<td><a href="<%=request.getContextPath()%>/modifyStudent.csu?studentNo=<%=student.getStudentNo()%>">add </a></td>
 				</tr>
 			</tbody>
 			<% 
 			} 
-			%> 
-			
+			%> 			
 		</table>
 	</body>
 </html>

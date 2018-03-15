@@ -18,8 +18,7 @@ public class GetTeacherListController extends HttpServlet {
 		/*request에 teacher의 no,id값을 담은후 getTeacherList.jsp에 넘겨준다*/
 		TeacherDao teacherdao = new TeacherDao();
 		ArrayList<Teacher> list = teacherdao.selectTeacherList();
-		request.setAttribute("teacherList",list);
-		
+		request.setAttribute("teacherList",list);	
 		request.getRequestDispatcher("/WEB-INF/views/getTeacherList.jsp").forward(request,response);		
 	}
 }

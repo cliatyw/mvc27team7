@@ -81,8 +81,7 @@ public class TeacherDao {
 	/*teacher_no의 값을 매개변수로 가져와 삭제처리하는 메서드*/
 	public void deleteTeacher(String teacher_no) {
 		connection = DriverDao.DriverDbConnection();
-		String sql = "DELETE FROM teacher WHERE teacher_no=?";
-		
+		String sql = "DELETE FROM teacher WHERE teacher_no=?";		
 		try {
 			statement = connection.prepareStatement(sql);
 			statement.setString(1,teacher_no);

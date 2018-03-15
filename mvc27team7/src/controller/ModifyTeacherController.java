@@ -12,12 +12,6 @@ import model.TeacherDao;
 
 @WebServlet("/modifyTeacher.kdh")
 public class ModifyTeacherController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    public ModifyTeacherController() {
-        super();
-    }
-	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	request.setCharacterEncoding("euc-kr");
     	/*get방식으로 teacher_no의 값을 받아온다*/

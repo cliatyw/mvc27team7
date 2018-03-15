@@ -42,6 +42,7 @@ public class ModifyTeacherController extends HttpServlet {
 		/*Dao수정처리메소드호출*/
 		TeacherDao dao = new TeacherDao();
 		dao.updateTeacher(teacher);
+		response.sendRedirect(request.getContextPath()+"/getTeacherList.kdh");
 	}
 
 }

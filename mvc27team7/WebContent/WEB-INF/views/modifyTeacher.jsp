@@ -4,13 +4,27 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>modifyTeacher.jsp</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#btn").click(function(){
+				if($("#teacherId").val().length<4){
+					$("#idHelper").text("아이디는 4자이상");
+				}else if($("#teacherPw").val().length<4){
+					$("#pwHelper").text("비밀번호 4자이상");
+				}else{
+					$("#form").submit();
+				}
+			});
+		});
+	</script>
 </head>
 <body>
 	<%
 	String teacher_no =(String)request.getAttribute("teacher_no");
 	%>
 	<h3>수정화면</h3>
-	<form action="<%=request.getContextPath()%>/modifyTeacher.kdh" method="post">
+	<form id="form" action="<%=request.getContextPath()%>/modifyTeacher.kdh" method="post">
 		<table border="1">
 			<thead>
 				<tr>
@@ -22,9 +36,9 @@
 			<tbody>
 				<tr>
 					<td><input type=hidden name="teacherNo" value="<%=teacher_no%>"><%=teacher_no%></td>
-					<td><input type="text" size="20" name="teacherId"></td>
-					<td><input type="text" size="20" name="teacherPw"></td>
-					<input type="submit" value="확인">
+					<td><input type="text" size="20" name="teacherId" id="teacherId"><span id="idHelper"></span></td>
+					<td><input type="text" size="20" name="teacherPw" id="teacherPw"><span id="pwHelper"></span></td>
+					<button id="btn" type="button">수정확인</button>
 				</tr>				
 			</tbody>			
 		</table>

@@ -39,14 +39,13 @@ public class StudentDao {
 		
 		try {
 			connection = DriverDao.DriverDbConnection();
-			statement=connection.prepareStatement("SELECT student_no AS studentNo, student_id AS studentId, student_pw AS studentPw FROM student ORDER BY student_no ASC");
+			statement=connection.prepareStatement("SELECT student_no AS studentNo, student_id AS studentId FROM student ORDER BY student_no ASC");
 			rs = statement.executeQuery();
 			
 			while (rs.next()) {
 				Student student = new Student();
 				student.setStudentNo(rs.getInt("studentNo"));
 				student.setStudentId(rs.getString("studentId"));
-				student.setStudentPw(rs.getString("studentPw"));
 				list.add(student);
 			}		
 		} catch (SQLException e) {
@@ -58,4 +57,33 @@ public class StudentDao {
 		}
 		return list;
 	}
+	
+	public void updateStudent(Student student) {
+		Connection connection = null;
+		PreparedStatement statement = null;
+			try {
+				connection = DriverDao.DriverDbConnection();
+				statement = connection.prepareStatement("UPDATE student SET student_id=?,student_pw=? WHERE student_no = ?");
+				statement.setString(1, student.getStudentId());
+				statement.setString(2, student.getStudentPw());
+				statement.setInt(3, student.getStudentNo());
+				statement.executeUpdate();
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			
+			} finally {
+				if (statement != null) try { statement.close(); } catch(SQLException ex) {}
+				if (connection != null) try { connection.close(); } catch(SQLException ex) {}
+			}
+			
+		}
+	
+	public int deleteStudent(Student student) {
+		return 0;
+	}
+	
+	
+	
+	
 }

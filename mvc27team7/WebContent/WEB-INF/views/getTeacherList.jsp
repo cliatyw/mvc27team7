@@ -36,7 +36,8 @@
 				<td>****</td>
 				<!-- modifyTeacher.kdh를 읽어들일 Controller파일생성 -->
 				<td><a href="<%=request.getContextPath() %>/modifyTeacher.kdh?send_no=<%= teacher.getTeacherNo() %>">수정</a></td>
-				<td><a href="/removeTeacher.kdh"></a>삭제</td>
+				<!-- removeTeacher.kdh를 읽어들일 Controller파일생성 -->
+				<td><a href="<%=request.getContextPath() %>/removeTeacher.kdh?send_no=<%= teacher.getTeacherNo() %>">삭제</a></td>
 				<td><a href="/addTeacherAddr.kdh"></a>주소추가</td>
 			</tr>
 		<%

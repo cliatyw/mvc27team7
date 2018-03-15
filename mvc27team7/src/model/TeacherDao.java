@@ -78,8 +78,20 @@ public class TeacherDao {
 			if (statement != null) try { statement.close(); } catch(SQLException e) {}
 		}
 	}
-	//삭제
-	public int deleteTeacher(Teacher teacher) {
-		return 0;
+	/*teacher_no의 값을 매개변수로 가져와 삭제처리하는 메서드*/
+	public void deleteTeacher(String teacher_no) {
+		connection = DriverDao.DriverDbConnection();
+		String sql = "DELETE FROM teacher WHERE teacher_no=?";
+		
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setString(1,teacher_no);
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (connection != null) try { connection.close(); } catch(SQLException e) {}
+			if (statement != null) try { statement.close(); } catch(SQLException e) {}
+		}
 	}
 }

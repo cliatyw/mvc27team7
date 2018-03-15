@@ -19,6 +19,9 @@
 					<th>번호</th>
 					<th>아이디</th>
 					<th>비밀번호</th>
+					<th>수정</th>
+					<th>삭제</th>
+					<th>주소 입력</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,7 +35,10 @@
 					<tr>
 						<td><%= employee.getEmployeeNo() %></td>
 						<td><%=	employee.getEmployeeId() %></td>
-						<td><%= employee.getEmployeePw() %></td>
+						<td>****</td>
+						<td><a href="<%=request.getContextPath() %>/modifyEmployee.kks?employeeNo=<%= employee.getEmployeeNo() %>">수정</a></td>
+						<td><a href="<%=request.getContextPath() %>/removeEmployee.kks?employeeNo=<%= employee.getEmployeeNo() %>">삭제</a></td>
+						<td><a href="<%=request.getContextPath() %>/addEmployeeAddr.kks?employeeNo=<%= employee.getEmployeeNo() %>">주소 추가</a></td>
 					</tr>
 				<%
 				}

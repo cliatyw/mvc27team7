@@ -29,8 +29,6 @@ public class EmployeeDao {
 			preparedStatement.setString(2, employee.getEmployeePw());
 
 			preparedStatement.execute();
-			preparedStatement.close();
-			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -47,7 +45,7 @@ public class EmployeeDao {
 		connection = DriverDao.DriverDbConnection();
 		
 		ArrayList<Employee> list = new ArrayList<>();
-		String sql = "SELECT employee_no AS employeeNo, employee_id AS employeeId, employee_pw AS employeePw FROM employee ORDER BY employee_no ASC";
+		String sql = "SELECT employee_no AS employeeNo, employee_id AS employeeId FROM employee ORDER BY employee_no ASC";
 		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
@@ -57,7 +55,6 @@ public class EmployeeDao {
 				Employee employee = new Employee();
 				employee.setEmployeeNo(resultSet.getInt("employeeNo"));
 				employee.setEmployeeId(resultSet.getString("employeeId"));
-				employee.setEmployeePw(resultSet.getString("employeePw"));
 				list.add(employee);
 			}
 			
@@ -69,5 +66,34 @@ public class EmployeeDao {
 			if (resultSet != null) try { resultSet.close(); } catch(SQLException e) {}
 		}
 		return list;
+	}
+	/**
+	 * employee를 매개변수로 받아 수정하는 매서드
+	 * @param employee
+	 */
+	public void updateEmployee(Employee employee) {
+		
+		connection = DriverDao.DriverDbConnection();
+		String sql = "UPDATE employee SET employee_id=?, employee_pw=? WHERE employee_no=?";
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+
+			preparedStatement.setString(1, employee.getEmployeeId());
+			preparedStatement.setString(2, employee.getEmployeePw());
+			preparedStatement.setInt(3, employee.getEmployeeNo());
+
+			preparedStatement.execute();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			if (preparedStatement != null) try { preparedStatement.close(); } catch(SQLException e) {}
+			if (connection != null) try { connection.close(); } catch(SQLException e) {}
+		}
+	}
+	public int deleteEmployee(Employee employee) {
+		return 0;
+		
 	}
 }

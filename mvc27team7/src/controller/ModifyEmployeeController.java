@@ -1,3 +1,4 @@
+/*[김기성]*/
 package controller;
 
 import java.io.IOException;
@@ -12,8 +13,7 @@ import model.EmployeeDao;
 
 @WebServlet("/modifyEmployee.kks")
 public class ModifyEmployeeController extends HttpServlet {
-	Employee employee = null;
-	EmployeeDao employeeDao = null;
+	private EmployeeDao employeeDao = null;
 	//no값만 받아 수정화면으로 간다.
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -21,7 +21,7 @@ public class ModifyEmployeeController extends HttpServlet {
 	}
 	//수정화면에서 수정한 값을 입력하여 수정한 후 리스트화면으로 간다.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		employee = new Employee();
+		Employee employee = new Employee();
 		employee.setEmployeeId(request.getParameter("employeeId"));
 		employee.setEmployeeNo(Integer.parseInt(request.getParameter("employeeNo")));
 		employee.setEmployeePw(request.getParameter("employeePw"));

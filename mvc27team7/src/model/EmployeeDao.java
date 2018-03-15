@@ -92,8 +92,25 @@ public class EmployeeDao {
 			if (connection != null) try { connection.close(); } catch(SQLException e) {}
 		}
 	}
-	public int deleteEmployee(Employee employee) {
-		return 0;
+	/**
+	 * no를 매개변수로 받아 삭제하는 매서드
+	 * @param employeeNo
+	 */
+	public void deleteEmployee(String employeeNo) {
 		
+		connection = DriverDao.DriverDbConnection();
+		String sql = "DELETE FROM employee WHERE employee_no=?";
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			
+			preparedStatement.setString(1, employeeNo);
+
+			preparedStatement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (preparedStatement != null) try { preparedStatement.close(); } catch(SQLException e) {}
+			if (connection != null) try { connection.close(); } catch(SQLException e) {}
+		}
 	}
 }

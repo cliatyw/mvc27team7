@@ -18,9 +18,11 @@
 			if($("#employeeNo").val() === "null"){
 				$("#head").text("직원 추가");
 				$("#addEmployeeForm").attr("action", "addEmployee.kks");
+				$("#btn").text("추가");
 			}else{
 				$("#head").text("직원 수정");
 				$("#addEmployeeForm").attr("action", "modifyEmployee.kks");
+				$("#btn").text("수정");
 			}
 			/* 폼 유효성 검사
 			id 4자 이상, pw 4자 이상, 비밀번호 체크
@@ -63,9 +65,8 @@
 			<h1 id="head"></h1>
 		</div>
 		<div class="col-md-6 col-md-offset-3">
-			<form role="form" id="addEmployeeForm" method="post" action="<%=request.getContextPath() %>/addEmployee.kks">
+			<form role="form" id="addEmployeeForm" method="post">
 				<input type="hidden" id="employeeNo" name="employeeNo" value="<%= request.getParameter("employeeNo") %>">
-				<% System.out.println(request.getParameter("employeeNo")); %>
 				<div class="form-group">
 					<label for="InputId">아이디</label>
 					<input type="text" id="employeeId" name="employeeId" class="form-control">
@@ -82,7 +83,7 @@
 				</div>
 				<span id="pwCheckHelper"></span>
 				<div class="form-group text-center">
-					<button id="btn" type="button" class="btn btn-info">직원 추가<i class="fa fa-check spaceLeft"></i></button>
+					<button id="btn" type="button" class="btn btn-info"><i class="fa fa-check spaceLeft"></i></button>
 				</div>
 			</form>
 		</div>

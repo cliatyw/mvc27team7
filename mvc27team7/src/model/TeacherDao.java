@@ -60,9 +60,23 @@ public class TeacherDao {
 			if (resultset != null) try { resultset.close(); } catch(SQLException e) {}
 		} return list;
 	}
-	//수정처리
-	public int updateTeacher(Teacher teacher) {
-		return 0;
+	/*해당 teacher_no의 id와 pw의값을 수정하는 메소드*/
+	public void updateTeacher(Teacher teacher) {
+		connection = DriverDao.DriverDbConnection();
+		String sql = "UPDATE teacher SET teacher_id=?,teacher_pw=? WHERE teacher_no=?";	
+		try {
+			System.out.println("수정처리 메소드 실행");
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, teacher.getTeacherId());
+			statement.setString(2, teacher.getTeacherPw());
+			statement.setInt(3, teacher.getTeacherNo());
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (connection != null) try { connection.close(); } catch(SQLException e) {}
+			if (statement != null) try { statement.close(); } catch(SQLException e) {}
+		}
 	}
 	//삭제
 	public int deleteTeacher(Teacher teacher) {

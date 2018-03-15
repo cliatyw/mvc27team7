@@ -35,7 +35,7 @@
 				<!-- select쿼리문에 비밀번호 값을 가져오지않는다 -->
 				<td>****</td>
 				<!-- modifyTeacher.kdh를 읽어들일 Controller파일생성 -->
-				<td><a href="<%=request.getContextPath() %>/modifyTeacher.kdh"></a>수정</td>
+				<td><a href="<%=request.getContextPath() %>/modifyTeacher.kdh?send_no=<%= teacher.getTeacherNo() %>">수정</a></td>
 				<td><a href="/removeTeacher.kdh"></a>삭제</td>
 				<td><a href="/addTeacherAddr.kdh"></a>주소추가</td>
 			</tr>

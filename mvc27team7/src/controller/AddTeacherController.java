@@ -14,11 +14,12 @@ import model.TeacherDao;
 public class AddTeacherController extends HttpServlet {	
 	//teacher 입력폼
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		request.setCharacterEncoding("euc-kr");
 		request.getRequestDispatcher("/WEB-INF/views/addTeacher.jsp").forward(request,response);
 	}
 	//teacher 입력
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
+		request.setCharacterEncoding("euc-kr");	
 		String teacherId = request.getParameter("teacherId");
 		String teacherPw = request.getParameter("teacherPw");
 		System.out.println(teacherId+"<--teacherId");

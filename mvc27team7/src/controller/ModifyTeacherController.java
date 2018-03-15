@@ -19,6 +19,7 @@ public class ModifyTeacherController extends HttpServlet {
     }
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	request.setCharacterEncoding("euc-kr");
     	/*get방식으로 teacher_no의 값을 받아온다*/
     	String teacher_no = request.getParameter("send_no");
 		System.out.println(teacher_no+"<--teacher_no ModifyTeacher");
@@ -27,6 +28,7 @@ public class ModifyTeacherController extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/views/modifyTeacher.jsp").forward(request,response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("euc-kr");
 		System.out.println("doPost ModifyTeacherController");
 		/*수정화면의 teacher id와 pw의 값을 받아온다*/
 		String teacher_id = request.getParameter("teacherId");

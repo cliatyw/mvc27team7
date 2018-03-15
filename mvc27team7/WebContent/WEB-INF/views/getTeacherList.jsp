@@ -24,6 +24,7 @@
 	</thead>
 	<tbody>
 		<%
+		request.setCharacterEncoding("euc-kr");
 		/*리턴값(teacher의 no,id,pw)을 list에 담는다 */
 		ArrayList<Teacher> list = (ArrayList)request.getAttribute("teacherList");
 				
@@ -38,7 +39,7 @@
 				<td><a href="<%=request.getContextPath() %>/modifyTeacher.kdh?send_no=<%= teacher.getTeacherNo() %>">수정</a></td>
 				<!-- removeTeacher.kdh를 읽어들일 Controller파일생성 -->
 				<td><a href="<%=request.getContextPath() %>/removeTeacher.kdh?send_no=<%= teacher.getTeacherNo() %>">삭제</a></td>
-				<td><a href="/addTeacherAddr.kdh"></a>주소추가</td>
+				<td><a href="<%=request.getContextPath() %>/addTeacherAddr.kdh?send_no=<%= teacher.getTeacherNo() %>">주소추가</a></td>
 			</tr>
 		<%
 		}

@@ -37,6 +37,9 @@
 	</style>
 </head>
 <body>
+	<%
+	request.setCharacterEncoding("euc-kr");
+	%>
 	<img src="<%= request.getContextPath() %>/image2.png" class="img-circle" alt="Responsive image" width = "30%">
 	<h1>addTeacher</h1>
 		<div class="col-lg-4">	

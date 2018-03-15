@@ -22,6 +22,7 @@
 </head>
 <body>
 	<%
+	request.setCharacterEncoding("euc-kr");
 	String teacher_no =(String)request.getAttribute("teacher_no");
 	%>
 	<h3>수정화면</h3>

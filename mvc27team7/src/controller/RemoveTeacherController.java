@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import model.TeacherDao;
 
 @WebServlet("/removeTeacher.kdh")
-public class RemoveTeacher extends HttpServlet {
+public class RemoveTeacherController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
-    public RemoveTeacher() {
+    public RemoveTeacherController() {
         super();
         
     }

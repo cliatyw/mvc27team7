@@ -1,6 +1,8 @@
 /*[김도희]*/
 package controller;
 
+
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import model.Teacher;
 import model.TeacherDao;
 
+
 @WebServlet("/modifyTeacher.kdh")
 public class ModifyTeacherController extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    /*send_no의 값을 받아와 forward로 수정화면폼으로 이동한다*/
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	request.setCharacterEncoding("euc-kr");
     	/*get방식으로 teacher_no의 값을 받아온다*/
     	String teacher_no = request.getParameter("send_no");

@@ -19,7 +19,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<input type=hidden name="teacher_no" value="<%=request.getAttribute("teacher_no")%>">
+					<input type=hidden name="teacher_no" value="<%=request.getParameter("send_no")%>">
 					<td><input type="text" size="20" name="address"></td>
 					<input type="submit" value="µî·Ï">
 				</tr>				

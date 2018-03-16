@@ -14,15 +14,16 @@ import model.EmployeeAddr;
 import model.EmployeeAddrDao;
 
 @WebServlet("/addEmployeeAddr.kks")
-public class addEmployeeAddrController extends HttpServlet {
+public class AddEmployeeAddrController extends HttpServlet {
 	
 	private EmployeeAddrDao employeeAddrDao = null;
 	//no값만 받아 주소입력창으로 이동한다.
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("UTF-8");
 		
 		employeeAddrDao = new EmployeeAddrDao();
 		String employeeNo = request.getParameter("employeeNo");
+		//5개 이상일시 request에 disabled을 셋팅한다.
 		if(employeeAddrDao.countEmployeeAddr(employeeNo)>=5) {
 			
 			request.setAttribute("disabled", "disabled");
@@ -32,10 +33,12 @@ public class addEmployeeAddrController extends HttpServlet {
 	}
 	//입력받은 주소값을 db에 저장한다.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("UTF-8");
+		
 		employeeAddrDao = new EmployeeAddrDao();
 		String employeeNo = request.getParameter("employeeNo");
-		if(employeeAddrDao.countEmployeeAddr(employeeNo)<=5) {
+		//5개 이하일때만 삽입
+		if(employeeAddrDao.countEmployeeAddr(employeeNo)<5) {
 			EmployeeAddr employeeAddr = new EmployeeAddr();
 			employeeAddr.setEmployeeNo(Integer.parseInt(employeeNo));
 			employeeAddr.setAddress(request.getParameter("employeeAddr"));
@@ -44,7 +47,7 @@ public class addEmployeeAddrController extends HttpServlet {
 			
 			response.sendRedirect(request.getContextPath() + "/getEmployeeController.kks");
 		}else {
-			response.setContentType("text/html;charset=euc-kr");
+			response.setContentType("text/html;charset=UTF-8");
 	   		PrintWriter out=response.getWriter();
 	   		out.println("<script>");
 	   		out.println("alert('주소를 5개 초과했습니다');");

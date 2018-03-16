@@ -1,33 +1,33 @@
-<!-- [±è±â¼º] -->
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!-- [ê¹€ê¸°ì„±] -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.Employee" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>getEmployeeList.jsp</title>
 </head>
 <body>
 	<div>
-		<h1>Á÷¿ø ¸ñ·Ï</h1>
+		<h1>ì§ì› ëª©ë¡</h1>
 	</div>
 	<div>
 		<table>
 			<thead>
 				<tr>
-					<th>¹øÈ£</th>
-					<th>¾ÆÀÌµğ</th>
-					<th>ºñ¹Ğ¹øÈ£</th>
-					<th>¼öÁ¤</th>
-					<th>»èÁ¦</th>
-					<th>ÁÖ¼Ò ÀÔ·Â</th>
+					<th>ë²ˆí˜¸</th>
+					<th>ì•„ì´ë””</th>
+					<th>ë¹„ë°€ë²ˆí˜¸</th>
+					<th>ìˆ˜ì •</th>
+					<th>ì‚­ì œ</th>
+					<th>ì£¼ì†Œ ì…ë ¥</th>
 				</tr>
 			</thead>
 			<tbody>
 				<%
 				ArrayList<Employee> list = new ArrayList<>();
-				/* request¿¡ ´ã°ÜÁ® ÀÖ´Â employeeList¸¦ °¡Á®¿Í list¿¡ ´ã´Â´Ù. */
+				/* requestì— ë‹´ê²¨ì ¸ ìˆëŠ” employeeListë¥¼ ê°€ì ¸ì™€ listì— ë‹´ëŠ”ë‹¤. */
 				list = (ArrayList)request.getAttribute("employeeList");
 				
 				for(Employee employee : list){
@@ -36,9 +36,9 @@
 						<td><%= employee.getEmployeeNo() %></td>
 						<td><%=	employee.getEmployeeId() %></td>
 						<td>****</td>
-						<td><a href="<%=request.getContextPath() %>/modifyEmployee.kks?employeeNo=<%= employee.getEmployeeNo() %>">¼öÁ¤</a></td>
-						<td><a href="<%=request.getContextPath() %>/removeEmployee.kks?employeeNo=<%= employee.getEmployeeNo() %>">»èÁ¦</a></td>
-						<td><a href="<%=request.getContextPath() %>/addEmployeeAddr.kks?employeeNo=<%= employee.getEmployeeNo() %>">ÁÖ¼Ò Ãß°¡</a></td>
+						<td><a href="<%=request.getContextPath() %>/modifyEmployee.kks?employeeNo=<%= employee.getEmployeeNo() %>">ìˆ˜ì •</a></td>
+						<td><a href="<%=request.getContextPath() %>/removeEmployee.kks?employeeNo=<%= employee.getEmployeeNo() %>">ì‚­ì œ</a></td>
+						<td><a href="<%=request.getContextPath() %>/addEmployeeAddr.kks?employeeNo=<%= employee.getEmployeeNo() %>">ì£¼ì†Œ ì¶”ê°€</a></td>
 					</tr>
 				<%
 				}

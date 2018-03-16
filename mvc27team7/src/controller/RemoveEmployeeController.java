@@ -13,9 +13,9 @@ import model.EmployeeDao;
 @WebServlet("/removeEmployee.kks")
 public class RemoveEmployeeController extends HttpServlet {
 	private EmployeeDao employeeDao = null;
-	
+	//no받아 삭제후 list화면으로 간다
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("UTF-8");
 		
 		String employeeNo = request.getParameter("employeeNo");
 		employeeDao = new EmployeeDao();

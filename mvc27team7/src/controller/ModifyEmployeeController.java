@@ -16,13 +16,13 @@ public class ModifyEmployeeController extends HttpServlet {
 	private EmployeeDao employeeDao = null;
 	//no값만 받아 수정화면으로 간다.
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("UTF-8");
 		
 		request.getRequestDispatcher("/WEB-INF/views/addEmployee.jsp").forward(request, response);
 	}
 	//수정화면에서 수정한 값을 입력하여 수정한 후 리스트화면으로 간다.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("UTF-8");
 		
 		Employee employee = new Employee();
 		employee.setEmployeeId(request.getParameter("employeeId"));

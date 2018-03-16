@@ -1,9 +1,9 @@
-<!-- [辫扁己] -->
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!-- [旯�旮办劚] -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>addEmployeeAddr.jsp</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link href="<%=request.getContextPath() %>/kks/css/bootstrap.min.css" rel="stylesheet">
@@ -16,7 +16,7 @@
 		$(document).ready(function(){
 			if($("#disabled").val() === "disabled"){
 				$("#employeeAddr").attr("disabled", true);
-				$("#btn").html('林家 格废')
+				$("#btn").html('欤检唽 氇╇')
 			}
 			$("#btn").click(function(){
 				$("#addEmployeeAddr").submit();
@@ -27,18 +27,18 @@
 <body>
 	<article class="container">
 		<div class="page-header">
-			<h1 id="head">林家 眠啊</h1>
+			<h1 id="head">欤检唽 於旉皜</h1>
 		</div>
 		<div class="col-md-6 col-md-offset-3">
 			<form role="form" id="addEmployeeAddr" method="post" action="<%=request.getContextPath() %>/addEmployeeAddr.kks">
 			<input type="hidden" id="employeeNo" name="employeeNo" value="<%= request.getParameter("employeeNo") %>">
 			<input type="hidden" id="disabled" name="disabled" value="<%= request.getAttribute("disabled") %>">
 				<div class="form-group">
-					<label for="InputAddr">林家 眠啊</label>
+					<label for="InputAddr">欤检唽 於旉皜</label>
 					<input type="text" id="employeeAddr" name="employeeAddr" class="form-control">
 				</div>
 				<div class="form-group text-center">
-					<button id="btn" type="button" class="btn btn-info">眠啊<i class="fa fa-check spaceLeft"></i></button>
+					<button id="btn" type="button" class="btn btn-info">於旉皜<i class="fa fa-check spaceLeft"></i></button>
 				</div>
 			</form>
 		</div>

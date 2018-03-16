@@ -16,10 +16,12 @@ public class GetEmployeeController extends HttpServlet {
 	private EmployeeDao employeeDao = null;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("euc-kr");
-		//Dao 호출  
-		//request에 속성 추가  
-		//v 로 포워드 
+		request.setCharacterEncoding("UTF-8");
+		/*
+		 * Dao 호출
+		 * request에 속성 추가
+		 * v 로 포워드
+		 */ 
 		employeeDao = new EmployeeDao();
 		//employee list를 리턴받는 매서드를 사용한후 request에 속성을 추가한다.
 		request.setAttribute("employeeList", employeeDao.selectEmployeeList());

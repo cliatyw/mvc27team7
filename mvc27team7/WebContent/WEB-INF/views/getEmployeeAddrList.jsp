@@ -1,30 +1,30 @@
-<!-- [±è±â¼º] -->
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!-- [ê¹€ê¸°ì„±] -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.*" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>getEmployeeList.jsp</title>
 </head>
 <body>
 	<div>
-		<h1>ÁÖ¼Ò ¸ñ·Ï</h1>
+		<h1>ì£¼ì†Œ ëª©ë¡</h1>
 	</div>
 	<div>
 		<table>
 			<thead>
 				<tr>
-					<th>¾ÆÀÌµğ</th>
-					<th>ÁÖ¼Ò</th>
+					<th>ì•„ì´ë””</th>
+					<th>ì£¼ì†Œ</th>
 				</tr>
 			</thead>
 			<tbody>
 				<%
 				ArrayList<EmployeeAddr> list = new ArrayList<>();
-				/* request¿¡ ´ã°ÜÁ® ÀÖ´Â employeeList¸¦ °¡Á®¿Í list¿¡ ´ã´Â´Ù. */
-				list = (ArrayList)request.getAttribute("employeeList");
+				/* requestì— ë‹´ê²¨ì ¸ ìˆëŠ” employeeListë¥¼ ê°€ì ¸ì™€ listì— ë‹´ëŠ”ë‹¤. */
+				list = (ArrayList)request.getAttribute("list");
 				
 				for(EmployeeAddr employeeAddr : list){
 				%>

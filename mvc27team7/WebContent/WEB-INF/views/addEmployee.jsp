@@ -1,9 +1,9 @@
-<!-- [±è±â¼º] -->
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!-- [ê¹€ê¸°ì„±] -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>addEmployee.jsp</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link href="<%=request.getContextPath() %>/kks/css/bootstrap.min.css" rel="stylesheet">
@@ -14,36 +14,36 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script>
 		$(document).ready(function(){
-			//no°ªÀÌ nullÀÌ¸é ÀÔ·ÂÃ³¸® ¾Æ´Ï¸é ¼öÁ¤Ã³¸®
+			//noê°’ì´ nullì´ë©´ ì…ë ¥ì²˜ë¦¬ ì•„ë‹ˆë©´ ìˆ˜ì •ì²˜ë¦¬
 			if($("#employeeNo").val() === "null"){
-				$("#head").text("Á÷¿ø Ãß°¡");
+				$("#head").text("ì§ì› ì¶”ê°€");
 				$("#addEmployeeForm").attr("action", "addEmployee.kks");
-				$("#btn").text("Ãß°¡");
+				$("#btn").text("ì¶”ê°€");
 			}else{
-				$("#head").text("Á÷¿ø ¼öÁ¤");
+				$("#head").text("ì§ì› ìˆ˜ì •");
 				$("#addEmployeeForm").attr("action", "modifyEmployee.kks");
-				$("#btn").text("¼öÁ¤");
+				$("#btn").text("ìˆ˜ì •");
 			}
-			/* Æû À¯È¿¼º °Ë»ç
-			id 4ÀÚ ÀÌ»ó, pw 4ÀÚ ÀÌ»ó, ºñ¹Ğ¹øÈ£ Ã¼Å©
-			Æû submit */
+			/* í¼ ìœ íš¨ì„± ê²€ì‚¬
+			id 4ì ì´ìƒ, pw 4ì ì´ìƒ, ë¹„ë°€ë²ˆí˜¸ ì²´í¬
+			í¼ submit */
 			$("#employeeId").blur(function(){
 				if($("#employeeId").val().length < 4){
-					$("#idHelper").text("¾ÆÀÌµğ´Â 4±ÛÀÚ ÀÌ»óÀÔ´Ï´Ù.");
+					$("#idHelper").text("ì•„ì´ë””ëŠ” 4ê¸€ì ì´ìƒì…ë‹ˆë‹¤.");
 				}else{
 					$("#idHelper").text("");
 				}
 			});
 			$("#employeePw").blur(function(){
 				if($("#employeePw").val().length < 4){
-					$("#pwHelper").text("ºñ¹Ğ¹øÈ£´Â 4±ÛÀÚ ÀÌ»óÀÔ´Ï´Ù.");
+					$("#pwHelper").text("ë¹„ë°€ë²ˆí˜¸ëŠ” 4ê¸€ì ì´ìƒì…ë‹ˆë‹¤.");
 				}else{
 					$("#pwHelper").text("");
 				}
 			});
 			$("#employeePwCheck").blur(function(){
 				if($("#employeePwCheck").val() !== $("#employeePw").val()){
-					$("#pwCheckHelper").text("ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØÁÖ¼¼¿ä.");
+					$("#pwCheckHelper").text("ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”.");
 				}else{
 					$("#pwCheckHelper").text("");
 				}
@@ -68,17 +68,17 @@
 			<form role="form" id="addEmployeeForm" method="post">
 				<input type="hidden" id="employeeNo" name="employeeNo" value="<%= request.getParameter("employeeNo") %>">
 				<div class="form-group">
-					<label for="InputId">¾ÆÀÌµğ</label>
+					<label for="InputId">ì•„ì´ë””</label>
 					<input type="text" id="employeeId" name="employeeId" class="form-control">
 				</div>
 				<span id="idHelper"></span>
 				<div class="form-group">
-					<label for="InputPw">ºñ¹Ğ¹øÈ£</label>
+					<label for="InputPw">ë¹„ë°€ë²ˆí˜¸</label>
 					<input type="password" id="employeePw" name="employeePw" class="form-control">
 				</div>
 				<span id="pwHelper"></span>
 				<div class="form-group">
-					<label for="InputPwCheck">ºñ¹Ğ¹øÈ£ È®ÀÎ</label>
+					<label for="InputPwCheck">ë¹„ë°€ë²ˆí˜¸ í™•ì¸</label>
 					<input type="password" id="employeePwCheck" name="employeePwCheck" class="form-control">
 				</div>
 				<span id="pwCheckHelper"></span>

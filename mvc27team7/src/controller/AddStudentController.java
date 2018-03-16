@@ -13,7 +13,7 @@ import model.StudentDao;
 
 @WebServlet("/addStudent.csu")
 public class AddStudentController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+
 	private Student student;
 	private StudentDao dao;
 

@@ -35,8 +35,8 @@
 					<td><%=student.getStudentId()%></td>
 					<td>****</td>
 					<td><a href="<%=request.getContextPath()%>/modifyStudent.csu?studentNo=<%=student.getStudentNo()%>">수정</a></td>
-					<td><a href="<%=request.getContextPath()%>/modifyStudent.csu?studentNo=<%=student.getStudentNo()%>">삭제</a></td>
-					<td><a href="<%=request.getContextPath()%>/modifyStudent.csu?studentNo=<%=student.getStudentNo()%>">add </a></td>
+					<td><a href="<%=request.getContextPath()%>/removeStudent.csu?studentNo=<%=student.getStudentNo()%>">삭제</a></td>
+					<td><a href="<%=request.getContextPath()%>/addStudentAddr.csu?studentNo=<%=student.getStudentNo()%>">add추가 </a></td>
 				</tr>
 			</tbody>
 			<% 

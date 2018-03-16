@@ -53,17 +53,18 @@
 				return;
 				}
 			});
-			
+
 		});
 	</script>
 	
 </head>
 <body>
 	<div class="row">
-		<div class="col-md-3" ></div>		
+		<div class="col-md-3"></div>		
 			<div class="col-sm-6">
 			<h2>addStudent</h2>
 			<form action="<%=request.getContextPath()%>/addStudent.csu" id="myform" method = "post">
+			<input type="hidden" name="studentNo" value="<%=request.getParameter("studentNo")%>">
 				<div class="panel panel-default">
 					<div class="panel-body form-horizontal">
 						<div class="studentId form-group has-error">

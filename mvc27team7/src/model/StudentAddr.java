@@ -1,22 +1,22 @@
 package model;
 
 public class StudentAddr {
-	private int student_addr_no;
-	private int student_no;
+	private int studentAddrNo;
+	private int studentNo;
 	private String address;
 	
 	
-	public int getStudent_addr_no() {
-		return student_addr_no;
+	public int getStudentAddrNo() {
+		return studentAddrNo;
 	}
-	public void setStudent_addr_no(int student_addr_no) {
-		this.student_addr_no = student_addr_no;
+	public void setStudentAddrNo(int studentAddrNo) {
+		this.studentAddrNo = studentAddrNo;
 	}
-	public int getStudent_no() {
-		return student_no;
+	public int getStudentNo() {
+		return studentNo;
 	}
-	public void setStudent_no(int student_no) {
-		this.student_no = student_no;
+	public void setStudentNo(int studentNo) {
+		this.studentNo = studentNo;
 	}
 	public String getAddress() {
 		return address;
@@ -26,7 +26,11 @@ public class StudentAddr {
 	}
 	@Override
 	public String toString() {
-		return "StudentAddr [student_addr_no=" + student_addr_no + ", student_no=" + student_no + ", address=" + address + "]";
+		return "StudentAddr [studentAddrNo=" + studentAddrNo + ", studentNo=" + studentNo + ", address=" + address
+				+ "]";
 	}
+	
+	
+	
 	
 }

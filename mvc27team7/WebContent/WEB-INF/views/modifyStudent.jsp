@@ -18,7 +18,6 @@
 			<td>암호</td>
 			<td><input type="password" name="studentPw" size="20" ></td>
 		<tr>
-
 		<tr>
 			<td colspan="2"><input type="submit" value="수정완료"></td>
 		</tr>

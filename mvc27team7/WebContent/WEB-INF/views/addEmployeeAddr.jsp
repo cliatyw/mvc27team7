@@ -14,6 +14,10 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script>
 		$(document).ready(function(){
+			if($("#disabled").val() === "disabled"){
+				$("#employeeAddr").attr("disabled", true);
+				$("#btn").html('林家 格废')
+			}
 			$("#btn").click(function(){
 				$("#addEmployeeAddr").submit();
 			});
@@ -28,6 +32,7 @@
 		<div class="col-md-6 col-md-offset-3">
 			<form role="form" id="addEmployeeAddr" method="post" action="<%=request.getContextPath() %>/addEmployeeAddr.kks">
 			<input type="hidden" id="employeeNo" name="employeeNo" value="<%= request.getParameter("employeeNo") %>">
+			<input type="hidden" id="disabled" name="disabled" value="<%= request.getAttribute("disabled") %>">
 				<div class="form-group">
 					<label for="InputAddr">林家 眠啊</label>
 					<input type="text" id="employeeAddr" name="employeeAddr" class="form-control">

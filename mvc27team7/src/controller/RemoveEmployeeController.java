@@ -15,6 +15,8 @@ public class RemoveEmployeeController extends HttpServlet {
 	private EmployeeDao employeeDao = null;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("euc-kr");
+		
 		String employeeNo = request.getParameter("employeeNo");
 		employeeDao = new EmployeeDao();
 		employeeDao.deleteEmployee(employeeNo);

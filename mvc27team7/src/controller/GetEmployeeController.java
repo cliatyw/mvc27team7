@@ -16,6 +16,7 @@ public class GetEmployeeController extends HttpServlet {
 	private EmployeeDao employeeDao = null;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("euc-kr");
 		//Dao 호출  
 		//request에 속성 추가  
 		//v 로 포워드 

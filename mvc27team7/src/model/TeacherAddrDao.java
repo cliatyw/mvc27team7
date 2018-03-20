@@ -42,16 +42,17 @@ public class TeacherAddrDao {
 		}
 		return count;
 	}
-	/*address 전체list를 조회하는 메소드*/ 
-	public ArrayList<TeacherAddr> selectTeacherAddrList() {
+	/*해당teacher_no의 전체list조회*/ 
+	public ArrayList<TeacherAddr> selectTeacherAddrList(int teacher_no) {
 		ArrayList<TeacherAddr> list = new ArrayList<TeacherAddr>();
 		connection = DriverDao.DriverDbConnection();
-		String sql = "SELECT * FROM teacher_addr";
+		String sql = "SELECT * FROM teacher_addr WHERE teacher_no=?";
 		try {
 			statement = connection.prepareStatement(sql);
+			statement.setInt(1, teacher_no);
 			resultset = statement.executeQuery();
 			while(resultset.next()) {
-				System.out.println("address 전체list를 조회하는 메소드 실행");
+				System.out.println("해당teacher_no의 전체list조회 실행");
 				TeacherAddr teacheraddr = new TeacherAddr();
 				teacheraddr.setTeacherAddrNo(resultset.getInt("teacher_addr_no"));
 				teacheraddr.setTeacherNo(resultset.getInt("teacher_no"));

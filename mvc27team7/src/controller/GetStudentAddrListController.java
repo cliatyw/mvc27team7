@@ -18,11 +18,11 @@ public class GetStudentAddrListController extends HttpServlet {
 	private StudentAddrDao dao;
 	private StudentAddr studentaddr;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		StudentAddr studentAddr = new StudentAddr();
+	int studentNo = Integer.parseInt(request.getParameter("studentNo"));
+
 	dao = new StudentAddrDao();
 
-	request.setAttribute("list", dao.selectStudentAddrList(studentaddr));
+	request.setAttribute("list", dao.selectStudentAddrList(studentNo));
 	request.getRequestDispatcher("/WEB-INF/views/getStudentAddrList.jsp").forward(request, response);
 	}
 }

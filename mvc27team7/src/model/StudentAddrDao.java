@@ -50,7 +50,7 @@ public class StudentAddrDao {
 		return count;
 	}
 	
-	public ArrayList<StudentAddr> selectStudentAddrList(StudentAddr studentaddr){
+	public ArrayList<StudentAddr> selectStudentAddrList(int studentNo){
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet rs = null;
@@ -58,8 +58,9 @@ public class StudentAddrDao {
 
 		try {
 			connection = DriverDao.DriverDbConnection();
-			statement=connection.prepareStatement("select * from student_addr where  student_no= ? ");
-			statement.setInt(1, studentaddr.getStudentNo());
+			statement=connection.prepareStatement("select * from student_addr Where student_no= ?");
+			statement.setInt(1, studentNo);		
+
 			rs = statement.executeQuery();
 			
 			while (rs.next()) {

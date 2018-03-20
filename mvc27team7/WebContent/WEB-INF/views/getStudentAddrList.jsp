@@ -14,6 +14,7 @@
 	%> 
 
 	<body>
+		<form method="post" action="/mvc27team7/studentAddrDelete.csu">
 		<table class="table table-striped table-bordered table-hover">
 		<caption>StudentList</caption>
 			<thead>
@@ -25,19 +26,29 @@
 				</tr>
 			</thead>
 			<% 
-			for(StudentAddr studentAddr : list){ 
+			for(int i=0; i<list.size(); i++){ 
 			%> 
 			<tbody>
 				<tr class="success">
-					<td><%=studentAddr.getStudentAddrNo()%></td>
-					<td><%=studentAddr.getStudentNo()%></td>
-					<td><%=studentAddr.getAddress()%></td>
-					<td><a href="<%=request.getContextPath()%>/removeStudent.csu?studentNo=<%=studentAddr.getStudentNo()%>">삭제</a></td>
-				</tr>
-			</tbody>
+					<td><%=list.get(i).getStudentAddrNo()%></td>
+					<td><%=list.get(i).getStudentNo()%></td>
+					<td><%=list.get(i).getAddress()%></td>
+					<td><input type ="checkbox" name=addrcheck value="<%=list.get(i).getStudentAddrNo()%>"></td>
+					</tr>				
+							
 			<% 
 			} 
-			%> 			
+			%> 		
+			<tr class="success">
+					<td>-------</td>
+					<td>-------</td>
+					<td>-------</td>
+					<td><button>삭제</button></td>
+					</tr>	
+			
+				
+			</tbody>
 		</table>
+		</form>
 	</body>
 </html>

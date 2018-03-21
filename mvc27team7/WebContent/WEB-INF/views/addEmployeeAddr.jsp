@@ -14,10 +14,13 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script>
 		$(document).ready(function(){
-			if($("#disabled").val() === "disabled"){
-				$("#employeeAddr").attr("disabled", true);
-				$("#btn").html('주소 목록')
-			}
+			$("#employeeAddr").click(function(){
+				if($("#excess").val() === "excess"){
+					alert('더이상 추가 할 수 없습니다.');
+					location.href='<%= request.getContextPath() %>/getEmployeeAddrList.kks?employeeNo=' + $("#employeeNo").val();
+				}
+			});
+			
 			$("#btn").click(function(){
 				$("#addEmployeeAddr").submit();
 			});
@@ -31,8 +34,8 @@
 		</div>
 		<div class="col-md-6 col-md-offset-3">
 			<form role="form" id="addEmployeeAddr" method="post" action="<%=request.getContextPath() %>/addEmployeeAddr.kks">
-			<input type="hidden" id="employeeNo" name="employeeNo" value="<%= request.getParameter("employeeNo") %>">
-			<input type="hidden" id="disabled" name="disabled" value="<%= request.getAttribute("disabled") %>">
+				<input type="hidden" id="employeeNo" name="employeeNo" value="<%= request.getParameter("employeeNo") %>">
+				<input type="hidden" id="excess" name="excess" value="<%= request.getAttribute("excess") %>">
 				<div class="form-group">
 					<label for="InputAddr">주소 추가</label>
 					<input type="text" id="employeeAddr" name="employeeAddr" class="form-control">

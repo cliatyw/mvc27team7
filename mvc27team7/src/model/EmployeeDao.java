@@ -98,7 +98,7 @@ public class EmployeeDao {
 	 * no를 매개변수로 받아 삭제하는 매서드
 	 * param employeeNo
 	 */
-	public void deleteEmployee(String employeeNo) {
+	public void deleteEmployee(int employeeNo) {
 		PreparedStatement preparedStatement = null;
 		
 		Connection connection = DriverDao.DriverDbConnection();
@@ -106,7 +106,7 @@ public class EmployeeDao {
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			
-			preparedStatement.setString(1, employeeNo);
+			preparedStatement.setInt(1, employeeNo);
 
 			preparedStatement.execute();
 		} catch (SQLException e) {

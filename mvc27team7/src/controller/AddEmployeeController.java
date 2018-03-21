@@ -40,7 +40,7 @@ public class AddEmployeeController extends HttpServlet {
 		//아이디와 비밀번호를 입력받은 값을 employee객체에 넣어 그 객체를 매개변수로 하여 삽입 매서드를 실행시킨다.
 		employeeDao.insertEmployee(employee);
 		
-		response.sendRedirect(request.getContextPath() + "/getEmployeeController.kks");
+		response.sendRedirect(request.getContextPath() + "/getEmployeeList.kks");
 	}
 
 }

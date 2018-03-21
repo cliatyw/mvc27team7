@@ -17,10 +17,10 @@ public class RemoveEmployeeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String employeeNo = request.getParameter("employeeNo");
+		int employeeNo = Integer.parseInt(request.getParameter("employeeNo"));
 		employeeDao = new EmployeeDao();
 		employeeDao.deleteEmployee(employeeNo);
 		
-		response.sendRedirect(request.getContextPath() + "/getEmployeeController.kks");
+		response.sendRedirect(request.getContextPath() + "/getEmployeeList.kks");
 	}
 }

@@ -7,35 +7,55 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>getEmployeeList.jsp</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("[name=checkAll]").click(function(){
+				if($("[name=checkAll]").prop("checked")){
+					$("[name=getEmployeeAddrNo]").prop("checked", true);
+				}else{
+					$("[name=getEmployeeAddrNo]").prop("checked", false);
+				}
+			});
+		});
+	</script>
 </head>
 <body>
 	<div>
 		<h1>주소 목록</h1>
 	</div>
 	<div>
-		<table>
-			<thead>
-				<tr>
-					<th>아이디</th>
-					<th>주소</th>
-				</tr>
-			</thead>
-			<tbody>
-				<%
-				ArrayList<EmployeeAddr> list = new ArrayList<>();
-				/* request에 담겨져 있는 employeeList를 가져와 list에 담는다. */
-				list = (ArrayList)request.getAttribute("list");
-				
-				for(EmployeeAddr employeeAddr : list){
-				%>
+		<form action="<%= request.getContextPath() %>/removeEmployeeAddr.kks" method="post">
+			<input type="hidden" name="employeeNo" value="<%= request.getAttribute("employeeNo") %>">
+			<table>
+				<thead>
 					<tr>
-						<td><%=	employeeAddr.getAddress() %></td>
+						<th><input type="checkbox" name="checkAll"></th>
+						<th>아이디</th>
+						<th>주소</th>
 					</tr>
-				<%
-				}
-				%>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<%
+					ArrayList<EmployeeAddr> list = new ArrayList<>();
+					/* request에 담겨져 있는 employeeList를 가져와 list에 담는다. */
+					list = (ArrayList)request.getAttribute("list");
+					
+					for(EmployeeAddr employeeAddr : list){
+					%>
+						<tr>
+							<td><input type="checkbox" name="getEmployeeAddrNo" value="<%= employeeAddr.getEmployeeAddrNo() %>"></td>
+							<td><%=	employeeAddr.getEmployeeNo() %></td>
+							<td><%=	employeeAddr.getAddress() %></td>
+						</tr>
+					<%
+					}
+					%>
+				</tbody>
+			</table>
+			<% System.out.println(request.getAttribute("employeeNo")); %>
+			<input type="submit" id="delete" value="삭제버튼">
+		</form>
 	</div>
 </body>
 </html>

@@ -32,7 +32,7 @@ public class ModifyEmployeeController extends HttpServlet {
 		//employee를 매개변수로 받아 수정하는 매서드를 실행한다.
 		employeeDao.updateEmployee(employee);
 		
-		response.sendRedirect(request.getContextPath() + "/getEmployeeController.kks");
+		response.sendRedirect(request.getContextPath() + "/getEmployeeList.kks");
 	}
 
 }

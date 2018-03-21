@@ -22,11 +22,11 @@ public class AddEmployeeAddrController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		employeeAddrDao = new EmployeeAddrDao();
-		String employeeNo = request.getParameter("employeeNo");
+		int employeeNo = Integer.parseInt(request.getParameter("employeeNo"));
 		//5개 이상일시 request에 disabled을 셋팅한다.
 		if(employeeAddrDao.countEmployeeAddr(employeeNo)>=5) {
 			
-			request.setAttribute("disabled", "disabled");
+			request.setAttribute("excess", "excess");
 			
 		}
 		request.getRequestDispatcher("/WEB-INF/views/addEmployeeAddr.jsp").forward(request, response);
@@ -36,25 +36,16 @@ public class AddEmployeeAddrController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		employeeAddrDao = new EmployeeAddrDao();
-		String employeeNo = request.getParameter("employeeNo");
+		int employeeNo = Integer.parseInt(request.getParameter("employeeNo"));
 		//5개 이하일때만 삽입
 		if(employeeAddrDao.countEmployeeAddr(employeeNo)<5) {
 			EmployeeAddr employeeAddr = new EmployeeAddr();
-			employeeAddr.setEmployeeNo(Integer.parseInt(employeeNo));
+			employeeAddr.setEmployeeNo(employeeNo);
 			employeeAddr.setAddress(request.getParameter("employeeAddr"));
 			
 			employeeAddrDao.insertEmployeeAddr(employeeAddr);
 			
-			response.sendRedirect(request.getContextPath() + "/getEmployeeController.kks");
-		}else {
-			response.setContentType("text/html;charset=UTF-8");
-	   		PrintWriter out=response.getWriter();
-	   		out.println("<script>");
-	   		out.println("alert('주소를 5개 초과했습니다');");
-	   		out.println("location.href='" + request.getContextPath() + "/getEmployeeController.kks';");
-	   		out.println("</script>");
-	   		out.close();
-	   		
+			response.sendRedirect(request.getContextPath() + "/getEmployeeAddrList.kks?employeeNo=" + employeeNo);
 		}
 	}
 }

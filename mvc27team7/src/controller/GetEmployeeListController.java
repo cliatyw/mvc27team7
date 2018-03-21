@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import model.Employee;
 import model.EmployeeDao;
 
-@WebServlet("/getEmployeeController.kks")
-public class GetEmployeeController extends HttpServlet {
+@WebServlet("/getEmployeeList.kks")
+public class GetEmployeeListController extends HttpServlet {
 	private EmployeeDao employeeDao = null;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

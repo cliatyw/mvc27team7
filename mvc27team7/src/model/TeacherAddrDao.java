@@ -8,11 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class TeacherAddrDao {
-	PreparedStatement statement = null;
-	Connection connection = null;
-	ResultSet resultset = null;
-	/*teacher_no,address추가하는 주소메서드*/
+	/*teacher_no,address추가*/
 	public void insertTeacherAddr(TeacherAddr teacherAddr) {
+		PreparedStatement statement = null;
+		Connection connection = null;
+		
 		connection = DriverDao.DriverDbConnection();
 		String sql = "INSERT INTO teacher_addr(teacher_no, address) VALUES (?, ?)";
 		try {
@@ -24,8 +24,12 @@ public class TeacherAddrDao {
 			e.printStackTrace();
 		}		
 	}
-	/*teacher address개수 구하는 메소드*/
+	/*teacher address개수 구하는것으로써 리턴형은 int*/
 	public int countTeacherAddr(int teacher_no) {
+		PreparedStatement statement = null;
+		Connection connection = null;
+		ResultSet resultset = null;
+		
 		int count=0;
 		connection = DriverDao.DriverDbConnection();
 		String sql = "SELECT count(*) FROM teacher_addr WHERE teacher_no=?";
@@ -42,8 +46,12 @@ public class TeacherAddrDao {
 		}
 		return count;
 	}
-	/*해당teacher_no의 전체list조회*/ 
+	/*해당teacher_no의 전체list조회로써 리턴형은 list배열*/ 
 	public ArrayList<TeacherAddr> selectTeacherAddrList(int teacher_no) {
+		PreparedStatement statement = null;
+		Connection connection = null;
+		ResultSet resultset = null;
+		
 		ArrayList<TeacherAddr> list = new ArrayList<TeacherAddr>();
 		connection = DriverDao.DriverDbConnection();
 		String sql = "SELECT * FROM teacher_addr WHERE teacher_no=?";
@@ -63,4 +71,23 @@ public class TeacherAddrDao {
 			e.printStackTrace();
 		} return list;
 	}
+	/*체크되었던 값들 addr_no들을 매개변수로 받고 주소삭제*/
+	public void deleteTeacherAddr(int list) {
+		PreparedStatement statement = null;
+		Connection connection = null;
+		
+		connection = DriverDao.DriverDbConnection();
+		String sql = "DELETE FROM teacher_addr WHERE teacher_addr_no=?";		
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1,list);
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (connection != null) try { connection.close(); } catch(SQLException e) {}
+			if (statement != null) try { statement.close(); } catch(SQLException e) {}
+		}
+	}
+	
 }

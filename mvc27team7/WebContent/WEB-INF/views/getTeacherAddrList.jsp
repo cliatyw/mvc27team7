@@ -8,27 +8,32 @@
 <title>getTeacherAddrList.jsp</title>
 </head>
 <body>
+	<form action="<%=request.getContextPath() %>/removeTeacherAddr.kdh" method="post">
 	<table border="1">
-	<thead>
-		<tr>
-			<th>teacher_addr_no</th>
-			<th>teacher_no</th>
-			<th>address</th>
-		</tr>
-	</thead>
-	<tbody>
+		<thead>
+			<tr>
+				<th>teacher_addr_no</th>
+				<th>teacher_no</th>
+				<th>address</th>
+				<th>삭제</th>
+			</tr>
+		</thead>
+		<tbody>
 	<%
 	ArrayList<TeacherAddr> list= (ArrayList<TeacherAddr>)request.getAttribute("list");
-	for(TeacherAddr teacheraddr : list) {
+	for(int i=0; i<list.size();i++) {
 	%>
-		<tr>
-			<td><%= teacheraddr.getTeacherAddrNo()%></td>
-			<td><%= teacheraddr.getTeacherNo()%></td>
-			<td><%= teacheraddr.getAddress()%></td>
-		</tr>
+			<tr>
+				<td><%= list.get(i).getTeacherAddrNo()%></td>
+				<td><input type="hidden" value="<%= list.get(i).getTeacherNo()%>" name="teacher_no"><%= list.get(i).getTeacherNo()%></td>
+				<td><%= list.get(i).getAddress()%></td>
+				<td><input type="checkbox" name="del_check" value="<%=list.get(i).getTeacherAddrNo()%>"></td>
+			</tr>	
 	<%
 	}
-	%>
+	%>	
+		</table>
+	<input type="submit" value="삭제">
 	</tbody>
 </body>
 </html>

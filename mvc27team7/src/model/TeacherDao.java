@@ -14,6 +14,9 @@ public class TeacherDao {
 	ResultSet resultset = null;
 	/*teacher의id,pw를 INSERT쿼리문을 사용하여 추가하는 메소드*/
 	public void insertTeacher(Teacher teacher) {	
+		PreparedStatement statement = null;
+		Connection connection = null;
+		
 		connection = DriverDao.DriverDbConnection();
 				
 		String sql = "INSERT INTO teacher(teacher_id, teacher_pw)VALUES (?, ?)";
@@ -34,6 +37,10 @@ public class TeacherDao {
 	}	
 	/*teacher(no,id)의 전체list를 조회하는 메소드로써 teacher의 no,id의 값을 담은 list배열을 리턴한다*/
 	public ArrayList<Teacher> selectTeacherList() {
+		PreparedStatement statement = null;
+		Connection connection = null;
+		ResultSet resultset = null;
+		
 		connection = DriverDao.DriverDbConnection();
 		ArrayList<Teacher> list = new ArrayList();
 		
@@ -62,6 +69,9 @@ public class TeacherDao {
 	}
 	/*해당 teacher_no의 id와 pw의값을 수정하는 메소드*/
 	public void updateTeacher(Teacher teacher) {
+		PreparedStatement statement = null;
+		Connection connection = null;
+		
 		connection = DriverDao.DriverDbConnection();
 		String sql = "UPDATE teacher SET teacher_id=?,teacher_pw=? WHERE teacher_no=?";	
 		try {
@@ -80,6 +90,9 @@ public class TeacherDao {
 	}
 	/*teacher_no의 값을 매개변수로 가져와 삭제처리하는 메서드*/
 	public void deleteTeacher(String teacher_no) {
+		PreparedStatement statement = null;
+		Connection connection = null;
+		
 		connection = DriverDao.DriverDbConnection();
 		String sql = "DELETE FROM teacher WHERE teacher_no=?";		
 		try {

@@ -17,6 +17,6 @@ public class RemoveStudentController extends HttpServlet {
 		
 		StudentDao dao = new StudentDao();
 		dao.deleteStudent(studentNo);
-		response.sendRedirect(request.getContextPath()+"/getStudentList.csu");
+		response.sendRedirect(request.getContextPath() +"/getStudentListAddr.csu");
 	}
 }

@@ -35,7 +35,7 @@
 					<td><%=list.get(i).getAddress()%></td>
 					<td><input type ="checkbox" name=addrcheck value="<%=list.get(i).getStudentAddrNo()%>"></td>
 					</tr>				
-							
+					
 			<% 
 			} 
 			%> 		

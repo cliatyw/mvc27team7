@@ -80,4 +80,22 @@ public class StudentAddrDao {
 		return list;
 	}
 	
+	public void deleteStudent(String student_addr_no) {
+		Connection connection = null;
+		PreparedStatement statement = null;
+
+		try {
+			System.out.println("deleteStudent실행");
+			connection = DriverDao.DriverDbConnection();
+			statement = connection.prepareStatement("DELETE FROM student_addr WHERE student_addr_no=?");
+			statement.setString(1,student_addr_no);
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (connection != null) try { connection.close(); } catch(SQLException e) {}
+			if (statement != null) try { statement.close(); } catch(SQLException e) {}
+		}
+	}
+	
 }

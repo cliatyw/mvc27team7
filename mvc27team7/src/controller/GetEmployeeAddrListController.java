@@ -15,6 +15,7 @@ import model.EmployeeAddrDao;
 @WebServlet("/getEmployeeAddrList.kks")
 public class GetEmployeeAddrListController extends HttpServlet {
 	private EmployeeAddrDao employeeAddrDao = null;
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
@@ -22,15 +23,11 @@ public class GetEmployeeAddrListController extends HttpServlet {
 		
 		employeeAddrDao = new EmployeeAddrDao();
 		
+		//request에 no와 no에 해당하는 addr list를 세팅한다.
 		request.setAttribute("employeeNo", employeeNo);
 		
 		request.setAttribute("list", employeeAddrDao.selectEmployeeAddrList(employeeNo));
 		
 		request.getRequestDispatcher("/WEB-INF/views/getEmployeeAddrList.jsp").forward(request, response);
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
-
 }

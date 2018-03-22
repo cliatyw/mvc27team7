@@ -12,12 +12,10 @@ import model.EmployeeAddrDao;
 @WebServlet("/removeEmployeeAddr.kks")
 public class RemoveEmployeeAddrController extends HttpServlet {
 	private EmployeeAddrDao employeeAddrDao=null;
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		//여러개의 no값을 받아 배열에 넣는다.
 		String[] checkList = request.getParameterValues("getEmployeeAddrNo");
 		
 		int employeeNo = Integer.parseInt(request.getParameter("employeeNo"));
@@ -25,6 +23,7 @@ public class RemoveEmployeeAddrController extends HttpServlet {
 		int checkListNo = 0;
 		employeeAddrDao = new EmployeeAddrDao();
 		
+		//배열에 담긴 no에 해당하는 주소목록을 삭제한다.
 		for(int i=0; checkList.length>i; i++) {
 			checkListNo = Integer.parseInt(checkList[i]);
 			employeeAddrDao.deleteEmployeeAddr(checkListNo);

@@ -4,10 +4,11 @@
 <jsp:include page="header.jsp"></jsp:include>
 	<script>
 		$(document).ready(function(){
-			$("#delete").click(function(){
-				if($("#employeePw") === "null"){
-					console.log($("#employeePw").val());
+			//주소가 존재하면 삭제하지 못하게 하는 쿼리
+			$(".delete").click(function(){
+				if($(this).parents('tr').find('.employeePw').val() === "exist"){
 					alert('주소가 존재하여 삭제할 수 없습니다.');
+					$(this).attr("href", "#");
 				}
 			});
 		});
@@ -30,12 +31,13 @@
 				<tr>
 					<td>${employee.employeeNo}</td>
 					<td>${employee.employeeId}</td>
-					<td>****<input type="hidden" id="employeePw" value="${employee.employeePw}"></td>
+					<td>****<input type="hidden" class="employeePw" value="${employee.employeePw}"></td>
 					<td><a href="${pageContext.request.contextPath}/modifyEmployee.kks?employeeNo=${employee.employeeNo}">수정</a></td>
-					<td><a id="delete" href="${pageContext.request.contextPath}/removeEmployee.kks?employeeNo=${employee.employeeNo}">삭제</a></td>
+					<td><a class="delete" href="${pageContext.request.contextPath}/removeEmployee.kks?employeeNo=${employee.employeeNo}">삭제</a></td>
 					<td><a href="${pageContext.request.contextPath}/addEmployeeAddr.kks?employeeNo=${employee.employeeNo}">주소 추가</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	<button type="button" class="btn btn-lg btn-default" onclick="location.href='${pageContext.request.contextPath}/addEmployee.kks'">추가</button>
 <jsp:include page="footer.jsp"></jsp:include>

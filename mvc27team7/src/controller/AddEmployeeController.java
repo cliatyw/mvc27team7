@@ -15,13 +15,13 @@ import model.EmployeeDao;
 public class AddEmployeeController extends HttpServlet {
 	
 	private EmployeeDao employeeDao = null;
-	
+	//입력창으로 이동한다.
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
 		request.getRequestDispatcher("/WEB-INF/views/addEmployee.jsp").forward(request, response);
 	}
-
+	//id와 pw받아 db에 삽입하고 list로 리다이렉트한다.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		/*  

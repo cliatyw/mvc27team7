@@ -18,6 +18,7 @@ import model.EmployeeDao;
 public class GetEmployeeListController extends HttpServlet {
 	private EmployeeDao employeeDao = null;
 	private EmployeeAddrDao employeeAddrDao = null;
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		/*
@@ -28,10 +29,10 @@ public class GetEmployeeListController extends HttpServlet {
 		employeeDao = new EmployeeDao();
 		employeeAddrDao = new EmployeeAddrDao();
 		ArrayList<Employee> list = employeeDao.selectEmployeeList();
-		
+		//주소를 가지고 있으면 pw를 exist로 셋팅
 		for(Employee employee : list) {
 			if(employeeAddrDao.countEmployeeAddr(employee.getEmployeeNo())>0) {
-				employee.setEmployeePw("null");
+				employee.setEmployeePw("exist");
 			}
 		}
 		//employee list를 리턴받는 매서드를 사용한후 request에 속성을 추가한다.

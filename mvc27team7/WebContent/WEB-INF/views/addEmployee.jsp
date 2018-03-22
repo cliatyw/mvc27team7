@@ -1,21 +1,9 @@
 <!-- [김기성] -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>addEmployee.jsp</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link href="<%=request.getContextPath() %>/kks/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="<%=request.getContextPath() %>/kks/css/font-awesome.min.css" media="screen" title="no title">
-	<link rel="stylesheet" href="<%=request.getContextPath() %>/kks/css/style.css" media="screen" title="no title">
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+<jsp:include page="header.jsp"></jsp:include>
 	<script>
 		$(document).ready(function(){
-			console.log(${employeeNo});
 			//no값이 null이면 입력처리 아니면 수정처리
 			if($("#employeeNo").val() === ""){
 				$("#head").text("직원 추가");
@@ -60,35 +48,32 @@
 			});
 		});
 	</script>
-</head>
-<body>
-	<article class="container">
-		<div class="page-header">
-			<h1 id="head"></h1>
-		</div>
-		<div class="col-md-6 col-md-offset-3">
-			<form role="form" id="addEmployeeForm" method="post">
-				<input type="hidden" id="employeeNo" name="employeeNo" value="${param.employeeNo}">
-				<div class="form-group">
-					<label for="InputId">아이디</label>
+	<h1 id="head" class="cover-heading"></h1>
+	<form role="form" id="addEmployeeForm" method="post">
+		<input type="hidden" id="employeeNo" name="employeeNo" value="${param.employeeNo}">
+		<table class="table">
+			<tr>
+				<td><label for="InputId">아이디</label></td>
+				<td>
 					<input type="text" id="employeeId" name="employeeId" class="form-control">
-				</div>
-				<span id="idHelper"></span>
-				<div class="form-group">
-					<label for="InputPw">비밀번호</label>
+					<span id="idHelper"></span>
+				</td>
+			</tr>
+			<tr>
+				<td><label for="InputPw">비밀번호</label></td>
+				<td>
 					<input type="password" id="employeePw" name="employeePw" class="form-control">
-				</div>
-				<span id="pwHelper"></span>
-				<div class="form-group">
-					<label for="InputPwCheck">비밀번호 확인</label>
+					<span id="pwHelper"></span>
+				</td>
+			</tr>
+			<tr>
+				<td><label for="InputPwCheck">비밀번호 확인</label></td>
+				<td>
 					<input type="password" id="employeePwCheck" name="employeePwCheck" class="form-control">
-				</div>
-				<span id="pwCheckHelper"></span>
-				<div class="form-group text-center">
-					<button id="btn" type="button" class="btn btn-info"><i class="fa fa-check spaceLeft"></i></button>
-				</div>
-			</form>
-		</div>
-	</article>
-</body>
-</html>
+					<span id="pwCheckHelper"></span>
+				</td>
+			</tr>
+		</table>
+		<button id="btn" type="button" class="btn btn-lg btn-default"></button>
+	</form>
+<jsp:include page="footer.jsp"></jsp:include>

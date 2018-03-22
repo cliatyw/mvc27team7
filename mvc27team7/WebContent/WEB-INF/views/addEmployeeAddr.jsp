@@ -15,6 +15,7 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script>
 		$(document).ready(function(){
+			//주소가 5개 이상일시 input박스 클리할때 경고창
 			$("#employeeAddr").click(function(){
 				if($("#excess").val() === "excess"){
 					alert('더이상 추가 할 수 없습니다.');

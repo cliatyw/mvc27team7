@@ -9,6 +9,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
 		$(document).ready(function(){
+			//전체 체크박스 설정쿼리
 			$("[name=checkAll]").click(function(){
 				if($("[name=checkAll]").prop("checked")){
 					$("[name=getEmployeeAddrNo]").prop("checked", true);

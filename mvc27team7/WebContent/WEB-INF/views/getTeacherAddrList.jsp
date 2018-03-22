@@ -1,6 +1,6 @@
-<%@page import="model.TeacherAddr"%>
-<%@page import="java.util.ArrayList"%>
+<!-- [±èµµÈñ] -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,7 @@
 <title>getTeacherAddrList.jsp</title>
 </head>
 <body>
-	<form action="<%=request.getContextPath() %>/removeTeacherAddr.kdh" method="post">
+	<form action="${pageContext.request.contextPath}/removeTeacherAddr.kdh" method="post">
 	<table border="1">
 		<thead>
 			<tr>
@@ -19,21 +19,16 @@
 			</tr>
 		</thead>
 		<tbody>
-	<%
-	ArrayList<TeacherAddr> list= (ArrayList<TeacherAddr>)request.getAttribute("list");
-	for(int i=0; i<list.size();i++) {
-	%>
-			<tr>
-				<td><%= list.get(i).getTeacherAddrNo()%></td>
-				<td><input type="hidden" value="<%= list.get(i).getTeacherNo()%>" name="teacher_no"><%= list.get(i).getTeacherNo()%></td>
-				<td><%= list.get(i).getAddress()%></td>
-				<td><input type="checkbox" name="del_check" value="<%=list.get(i).getTeacherAddrNo()%>"></td>
-			</tr>	
-	<%
-	}
-	%>	
-		</table>
+			<c:forEach var="teacher" items="${list}">
+				<tr>
+						<td><c:out value="${teacher.teacherAddrNo}"/></td>
+						<td><input type="hidden" value="${teacher.teacherNo}" name="teacher_no"><c:out value="${teacher.teacherNo}"/></td>
+						<td><c:out value="${teacher.address}"/></td>
+						<td><input type="checkbox" name="del_check" value="${teacher.teacherAddrNo}"></td>
+					</tr>	
+			</c:forEach>
+		</tbody>
+	</table>
 	<input type="submit" value="»èÁ¦">
-	</tbody>
 </body>
 </html>

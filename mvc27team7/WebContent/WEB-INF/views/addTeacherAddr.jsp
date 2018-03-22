@@ -1,5 +1,6 @@
 <!-- [±èµµÈñ] -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<% request.setCharacterEncoding("euc-kr"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,11 +19,7 @@
 	</script>
 </head>
 <body>
-	<%
-	request.setCharacterEncoding("euc-kr");
-	int count = (int)request.getAttribute("count");
-	%>
-	<form action="<%=request.getContextPath()%>/addTeacherAddr.kdh" method="post">
+	<form action="${pageContext.request.contextPath}/addTeacherAddr.kdh" method="post">
 	<table border="1">
 			<thead>
 				<tr>
@@ -31,8 +28,8 @@
 			</thead>
 			<tbody>
 				<tr>
-					<input type=hidden name="count" id="countId" value="<%=count%>">
-					<input type=hidden name="teacher_no" value="<%=request.getParameter("send_no")%>">
+					<input type=hidden name="count" id="countId" value="${count}">
+					<input type=hidden name="teacher_no" value="${param.send_no}">
 					<td><input type="text" id="addressId"size="20" name="address"></td>
 					<input type="submit" value="µî·Ï">
 				</tr>				

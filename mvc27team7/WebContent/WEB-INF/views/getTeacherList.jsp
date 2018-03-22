@@ -1,8 +1,8 @@
 <!-- [김도희] -->
-<%@page import = "model.Teacher" %>
-<%@page import = "model.TeacherDao" %>
-<%@page import = "java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!-- java code를 taglib으로 사용 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% request.setCharacterEncoding("euc-kr"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,27 +23,20 @@
 		</tr>
 	</thead>
 	<tbody>
-		<%
-		request.setCharacterEncoding("euc-kr");
-		/*리턴값(teacher의 no,id,pw)을 list에 담는다 */
-		ArrayList<Teacher> list = (ArrayList)request.getAttribute("teacherList");
-				
-		for(Teacher teacher : list) {
-		%>
+		<!-- 리턴값(teacher의 no,id,pw)을 list에 담는다 -->
+		<c:forEach var="teacher" items="${teacherList}">
 			<tr>
-				<td><%= teacher.getTeacherNo() %></td>
-				<td><%= teacher.getTeacherId() %></td>
+				<td><c:out value="${teacher.teacherNo}"/></td>
+				<td><c:out value="${teacher.teacherId}"/></td>
 				<!-- select쿼리문에 비밀번호 값을 가져오지않는다 -->
 				<td>****</td>
 				<!-- modifyTeacher.kdh를 읽어들일 Controller파일생성 -->
-				<td><a href="<%=request.getContextPath() %>/modifyTeacher.kdh?send_no=<%= teacher.getTeacherNo() %>">수정</a></td>
+				<td><a href="${pageContext.request.contextPath}/modifyTeacher.kdh?send_no=${teacher.teacherNo}">수정</a></td>
 				<!-- removeTeacher.kdh를 읽어들일 Controller파일생성 -->
-				<td><a href="<%=request.getContextPath() %>/removeTeacher.kdh?send_no=<%= teacher.getTeacherNo() %>">삭제</a></td>
-				<td><a href="<%=request.getContextPath() %>/addTeacherAddr.kdh?send_no=<%= teacher.getTeacherNo() %>">주소추가</a></td>
+				<td><a href="${pageContext.request.contextPath}/removeTeacher.kdh?send_no=${teacher.teacherNo}">삭제</a></td>
+				<td><a href="${pageContext.request.contextPath}/addTeacherAddr.kdh?send_no=${teacher.teacherNo}">주소추가</a></td>
 			</tr>
-		<%
-		}
-		%>
+		</c:forEach>						
 	</tbody>
 	</table>
 </body>

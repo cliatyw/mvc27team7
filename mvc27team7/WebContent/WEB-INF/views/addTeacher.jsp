@@ -37,13 +37,10 @@
 	</style>
 </head>
 <body>
-	<%
-	request.setCharacterEncoding("euc-kr");
-	%>
-	<img src="<%= request.getContextPath() %>/image2.png" class="img-circle" alt="Responsive image" width = "30%">
+	<img src="${pageContext.request.contextPath} class="img-circle" alt="Responsive image" width = "30%">
 	<h1>addTeacher</h1>
 		<div class="col-lg-4">	
-			<form id="form" method="post" action="<%= request.getContextPath() %>/addTeacher.kdh">
+			<form id="form" method="post" action="${pageContext.request.contextPath}/addTeacher.kdh">
 				<div class="bs-example"  data-example-id="contextual-table">
 					<table class="table">				       
 						<tr class="info">

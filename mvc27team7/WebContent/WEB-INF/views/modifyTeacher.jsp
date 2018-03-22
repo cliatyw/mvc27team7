@@ -1,5 +1,6 @@
 <!-- [김도희] -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<% request.setCharacterEncoding("euc-kr"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,12 +22,8 @@
 	</script>
 </head>
 <body>
-	<%
-	request.setCharacterEncoding("euc-kr");
-	String teacher_no =(String)request.getAttribute("teacher_no");
-	%>
 	<h3>수정화면</h3>
-	<form id="form" action="<%=request.getContextPath()%>/modifyTeacher.kdh" method="post">
+	<form id="form" action="${pageContext.request.contextPath}/modifyTeacher.kdh" method="post">
 		<table border="1">
 			<thead>
 				<tr>
@@ -37,7 +34,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><input type=hidden name="teacherNo" value="<%=teacher_no%>"><%=teacher_no%></td>
+					<td><input type=hidden name="teacherNo" value="${teacher_no}">${teacher_no}</td>
 					<td><input type="text" size="20" name="teacherId" id="teacherId"><span id="idHelper"></span></td>
 					<td><input type="text" size="20" name="teacherPw" id="teacherPw"><span id="pwHelper"></span></td>
 					<button id="btn" type="button">수정확인</button>

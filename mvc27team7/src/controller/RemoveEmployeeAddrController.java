@@ -20,7 +20,6 @@ public class RemoveEmployeeAddrController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String[] checkList = request.getParameterValues("getEmployeeAddrNo");
 		
-		System.out.println(request.getAttribute("employeeNo"));
 		int employeeNo = Integer.parseInt(request.getParameter("employeeNo"));
 		
 		int checkListNo = 0;

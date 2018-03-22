@@ -1,7 +1,6 @@
 <!-- [김기성] -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="model.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,8 +24,8 @@
 		<h1>주소 목록</h1>
 	</div>
 	<div>
-		<form action="<%= request.getContextPath() %>/removeEmployeeAddr.kks" method="post">
-			<input type="hidden" name="employeeNo" value="<%= request.getAttribute("employeeNo") %>">
+		<form action="${pageContext.request.contextPath}/removeEmployeeAddr.kks" method="post">
+			<input type="hidden" name="employeeNo" value="${param.employeeNo}">
 			<table>
 				<thead>
 					<tr>
@@ -36,24 +35,16 @@
 					</tr>
 				</thead>
 				<tbody>
-					<%
-					ArrayList<EmployeeAddr> list = new ArrayList<>();
-					/* request에 담겨져 있는 employeeList를 가져와 list에 담는다. */
-					list = (ArrayList)request.getAttribute("list");
-					
-					for(EmployeeAddr employeeAddr : list){
-					%>
+					<!-- request에 담겨져 있는 employeeList를 가져와 list에 담는다. -->
+					<c:forEach var="employeeAddr" items="${list}">
 						<tr>
-							<td><input type="checkbox" name="getEmployeeAddrNo" value="<%= employeeAddr.getEmployeeAddrNo() %>"></td>
-							<td><%=	employeeAddr.getEmployeeNo() %></td>
-							<td><%=	employeeAddr.getAddress() %></td>
+							<td><input type="checkbox" name="getEmployeeAddrNo" value="${employeeAddr.employeeAddrNo}"></td>
+							<td>${employeeAddr.employeeNo}</td>
+							<td>${employeeAddr.address}</td>
 						</tr>
-					<%
-					}
-					%>
+					</c:forEach>
 				</tbody>
 			</table>
-			<% System.out.println(request.getAttribute("employeeNo")); %>
 			<input type="submit" id="delete" value="삭제버튼">
 		</form>
 	</div>

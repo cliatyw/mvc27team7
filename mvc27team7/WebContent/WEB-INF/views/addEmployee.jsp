@@ -1,5 +1,6 @@
 <!-- [김기성] -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +15,9 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script>
 		$(document).ready(function(){
+			console.log(${employeeNo});
 			//no값이 null이면 입력처리 아니면 수정처리
-			if($("#employeeNo").val() === "null"){
+			if($("#employeeNo").val() === ""){
 				$("#head").text("직원 추가");
 				$("#addEmployeeForm").attr("action", "addEmployee.kks");
 				$("#btn").text("추가");
@@ -66,7 +68,7 @@
 		</div>
 		<div class="col-md-6 col-md-offset-3">
 			<form role="form" id="addEmployeeForm" method="post">
-				<input type="hidden" id="employeeNo" name="employeeNo" value="<%= request.getParameter("employeeNo") %>">
+				<input type="hidden" id="employeeNo" name="employeeNo" value="${param.employeeNo}">
 				<div class="form-group">
 					<label for="InputId">아이디</label>
 					<input type="text" id="employeeId" name="employeeId" class="form-control">

@@ -1,5 +1,6 @@
 <!-- [김기성] -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
 			$("#employeeAddr").click(function(){
 				if($("#excess").val() === "excess"){
 					alert('더이상 추가 할 수 없습니다.');
-					location.href='<%= request.getContextPath() %>/getEmployeeAddrList.kks?employeeNo=' + $("#employeeNo").val();
+					location.href='/mvc27team7/getEmployeeAddrList.kks?employeeNo=' + $("#employeeNo").val();
 				}
 			});
 			
@@ -33,9 +34,9 @@
 			<h1 id="head">주소 추가</h1>
 		</div>
 		<div class="col-md-6 col-md-offset-3">
-			<form role="form" id="addEmployeeAddr" method="post" action="<%=request.getContextPath() %>/addEmployeeAddr.kks">
-				<input type="hidden" id="employeeNo" name="employeeNo" value="<%= request.getParameter("employeeNo") %>">
-				<input type="hidden" id="excess" name="excess" value="<%= request.getAttribute("excess") %>">
+			<form role="form" id="addEmployeeAddr" method="post" action="${pageContext.request.contextPath}/addEmployeeAddr.kks">
+				<input type="hidden" id="employeeNo" name="employeeNo" value="${param.employeeNo}">
+				<input type="hidden" id="excess" name="excess" value="${excess}">
 				<div class="form-group">
 					<label for="InputAddr">주소 추가</label>
 					<input type="text" id="employeeAddr" name="employeeAddr" class="form-control">

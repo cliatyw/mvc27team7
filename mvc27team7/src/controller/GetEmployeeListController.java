@@ -24,7 +24,7 @@ public class GetEmployeeListController extends HttpServlet {
 		 */ 
 		employeeDao = new EmployeeDao();
 		//employee list를 리턴받는 매서드를 사용한후 request에 속성을 추가한다.
-		request.setAttribute("employeeList", employeeDao.selectEmployeeList());
+		request.setAttribute("list", employeeDao.selectEmployeeList());
 
 		request.getRequestDispatcher("/WEB-INF/views/getEmployeeList.jsp").forward(request, response);
 	}

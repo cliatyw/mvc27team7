@@ -1,7 +1,6 @@
 <!-- [김기성] -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="model.Employee" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,24 +24,17 @@
 				</tr>
 			</thead>
 			<tbody>
-				<%
-				ArrayList<Employee> list = new ArrayList<>();
-				/* request에 담겨져 있는 employeeList를 가져와 list에 담는다. */
-				list = (ArrayList)request.getAttribute("employeeList");
-				
-				for(Employee employee : list){
-				%>
+				<!-- request에 담겨져 있는 employeeList를 가져와 list에 담는다. -->
+				<c:forEach var="employee" items="${list}">
 					<tr>
-						<td><%= employee.getEmployeeNo() %></td>
-						<td><%=	employee.getEmployeeId() %></td>
+						<td>${employee.employeeNo}</td>
+						<td>${employee.employeeId}</td>
 						<td>****</td>
-						<td><a href="<%=request.getContextPath() %>/modifyEmployee.kks?employeeNo=<%= employee.getEmployeeNo() %>">수정</a></td>
-						<td><a href="<%=request.getContextPath() %>/removeEmployee.kks?employeeNo=<%= employee.getEmployeeNo() %>">삭제</a></td>
-						<td><a href="<%=request.getContextPath() %>/addEmployeeAddr.kks?employeeNo=<%= employee.getEmployeeNo() %>">주소 추가</a></td>
+						<td><a href="${pageContext.request.contextPath}/modifyEmployee.kks?employeeNo=${employee.employeeNo}">수정</a></td>
+						<td><a href="${pageContext.request.contextPath}/removeEmployee.kks?employeeNo=${employee.employeeNo}">삭제</a></td>
+						<td><a href="${pageContext.request.contextPath}/addEmployeeAddr.kks?employeeNo=${employee.employeeNo}">주소 추가</a></td>
 					</tr>
-				<%
-				}
-				%>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>

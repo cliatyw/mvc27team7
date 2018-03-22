@@ -89,7 +89,7 @@ public class TeacherDao {
 		}
 	}
 	/*teacher_no의 값을 매개변수로 가져와 삭제처리하는 메서드*/
-	public void deleteTeacher(String teacher_no) {
+	public void deleteTeacher(int teacher_no) {
 		PreparedStatement statement = null;
 		Connection connection = null;
 		
@@ -97,7 +97,7 @@ public class TeacherDao {
 		String sql = "DELETE FROM teacher WHERE teacher_no=?";		
 		try {
 			statement = connection.prepareStatement(sql);
-			statement.setString(1,teacher_no);
+			statement.setInt(1,teacher_no);
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -106,4 +106,5 @@ public class TeacherDao {
 			if (statement != null) try { statement.close(); } catch(SQLException e) {}
 		}
 	}
+	
 }

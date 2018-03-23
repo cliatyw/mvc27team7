@@ -35,8 +35,12 @@ public class TeacherDao {
 			if (connection != null) try { connection.close(); } catch(SQLException e) {}
 		}
 	}	
-	/*teacher(no,id)의 전체list를 조회하는 메소드로써 teacher의 no,id의 값을 담은 list배열을 리턴한다*/
-	public ArrayList<Teacher> selectTeacherList() {
+	/*
+	 * teacher(no,id)의 전체list를 조회하는 메소드로써 teacher의 no,id의 값을 담은 list배열을 리턴한다
+	 * 매개변수 int startRow -> select결과물의 시작행
+	 * 매개변수 int pagePerRow-> select결과물의 갯수
+	 * */
+	public ArrayList<Teacher> selectTeacherList(int startRow,int pagePerRow) {
 		PreparedStatement statement = null;
 		Connection connection = null;
 		ResultSet resultset = null;
@@ -44,13 +48,16 @@ public class TeacherDao {
 		connection = DriverDao.DriverDbConnection();
 		ArrayList<Teacher> list = new ArrayList();
 		
-		String sql = "SELECT *FROM teacher ORDER BY teacher_no ASC";
+		String sql = "SELECT * FROM teacher ORDER BY teacher_no ASC limit ?,?";
 		
 		try {
 			statement = connection.prepareStatement(sql);
+			statement.setInt(1,startRow);
+			statement.setInt(2,pagePerRow);
 			resultset = statement.executeQuery();
-			
+		
 			while(resultset.next()) {
+				System.out.println("selectTeacherList실행");
 				Teacher teacher = new Teacher();
 				teacher.setTeacherNo(resultset.getInt("teacher_no"));
 				teacher.setTeacherId(resultset.getString("teacher_id"));
@@ -106,5 +113,54 @@ public class TeacherDao {
 			if (statement != null) try { statement.close(); } catch(SQLException e) {}
 		}
 	}
-	
+	/*teacher총 count조회*/
+	public int countTeacher() {
+		PreparedStatement statement = null;
+		Connection connection = null;
+		ResultSet resultset = null;
+		
+		int count=0;
+		connection = DriverDao.DriverDbConnection();
+		String sql = "SELECT count(*) FROM teacher";
+		try {
+			statement = connection.prepareStatement(sql);
+			resultset = statement.executeQuery();
+			while(resultset.next()) {
+				count= Integer.parseInt(resultset.getString("count(*)"));
+				System.out.println(count+"<--count countTeacherAddr");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+	/*주소값이 있는지 없는지 검색*/
+	public ArrayList<Teacher> selectTeacherAddr() {
+		PreparedStatement statement = null;
+		Connection connection = null;
+		ResultSet resultset = null;		
+		ArrayList<Teacher> list = new ArrayList<Teacher>();
+		
+		connection = DriverDao.DriverDbConnection();
+		
+		String sql = "SELECT distinct(teacher.teacher_no) FROM teacher INNER JOIN teacher_addr ON teacher.teacher_no = teacher_addr.teacher_no";
+		
+		try {
+			System.out.println("selectTeacherAddr실행");
+			statement = connection.prepareStatement(sql);
+			resultset = statement.executeQuery();	
+			while(resultset.next()) {				
+				Teacher teacher  = new Teacher();
+				teacher.setTeacherNo(resultset.getInt("teacher_no"));
+				System.out.println(resultset.getInt("teacher_no"));
+				list.add(teacher);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (statement != null) try { statement.close(); } catch(SQLException e) {}
+			if (connection != null) try { connection.close(); } catch(SQLException e) {}
+			if (resultset != null) try { resultset.close(); } catch(SQLException e) {}
+		} return list;
+	}
 }

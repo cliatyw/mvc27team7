@@ -89,31 +89,4 @@ public class TeacherAddrDao {
 			if (statement != null) try { statement.close(); } catch(SQLException e) {}
 		}
 	}
-	/*주소값이 있는지 없는지 검색*/
-	public TeacherAddr selectTeacherAddr(int teacher_no) {
-		PreparedStatement statement = null;
-		Connection connection = null;
-		ResultSet resultset = null;
-		TeacherAddr teacheraddr = new TeacherAddr();
-		
-		connection = DriverDao.DriverDbConnection();
-		
-		String sql = "SELECT address FROM teacher_addr WHERE teacher_no=?";
-		
-		try {
-			statement = connection.prepareStatement(sql);
-			statement.setInt(1, teacher_no);
-			resultset = statement.executeQuery();	
-			while(resultset.next()) {				
-				teacheraddr.setAddress(resultset.getString("address"));
-				System.out.println(resultset.getString("address"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			if (statement != null) try { statement.close(); } catch(SQLException e) {}
-			if (connection != null) try { connection.close(); } catch(SQLException e) {}
-			if (resultset != null) try { resultset.close(); } catch(SQLException e) {}
-		} return teacheraddr;
-	}
 }

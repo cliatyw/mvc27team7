@@ -32,7 +32,7 @@ public class AddStudentController extends HttpServlet {
 		
 		dao = new StudentDao();
 		dao.insertStudent(student);
-		response.sendRedirect("/mvc27team7/getStudentList.csu");
+		response.sendRedirect(request.getContextPath() + "/getStudentList.csu");
 		
 	}
 

@@ -16,12 +16,13 @@ import model.StudentDao;
 public class GetStudentAddrListController extends HttpServlet {
 	
 	private StudentAddrDao dao;
-	private StudentAddr studentaddr;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	request.setCharacterEncoding("UTF-8");
 	int studentNo = Integer.parseInt(request.getParameter("studentNo"));
 
 	dao = new StudentAddrDao();
 
+	request.setAttribute("studentNo", studentNo);
 	request.setAttribute("list", dao.selectStudentAddrList(studentNo));
 	request.getRequestDispatcher("/WEB-INF/views/getStudentAddrList.jsp").forward(request, response);
 	}

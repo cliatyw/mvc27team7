@@ -14,9 +14,8 @@ import model.StudentAddr;
 import model.StudentAddrDao;
 @WebServlet("/addStudentAddr.csu")
 public class AddStudentAddrController extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException {
-		request.setCharacterEncoding("euc-kr");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		
 		StudentAddrDao dao = new StudentAddrDao();
 		int studentNo = Integer.parseInt(request.getParameter("studentNo"));
@@ -24,7 +23,7 @@ public class AddStudentAddrController extends HttpServlet {
 		
 		if(dao.countStudentAddr(studentNo)>=5) {
 			
-			request.setAttribute("addressclick", "addressclick");
+			request.setAttribute("excess", "excess");
 			
 		}
 		/* 주소 입력폼으로 이동 */
@@ -32,23 +31,16 @@ public class AddStudentAddrController extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/views/addStudentAddr.jsp").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.setCharacterEncoding("euc-kr");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		int studentNo = Integer.parseInt(request.getParameter("studentNo"));
-		String address = request.getParameter("address");
-
-		StudentAddr studentaddr = new StudentAddr();
-		studentaddr.setStudentNo(studentNo);
-		studentaddr.setAddress(address);
-		StudentAddrDao dao = new StudentAddrDao();
-		if (dao.countStudentAddr(studentNo) <= 4) {
-			dao.insertStudentAddr(studentaddr);
+		StudentAddrDao studentaddrdao = new StudentAddrDao();
+		if (studentaddrdao.countStudentAddr(studentNo) <= 4) {
+			StudentAddr studentaddr = new StudentAddr();
+			studentaddr.setStudentNo(studentNo);
+			studentaddr.setAddress(request.getParameter("studentAddr"));
+			studentaddrdao.insertStudentAddr(studentaddr);
 			response.sendRedirect(request.getContextPath() +"/getStudentListAddr.csu?studentNo=" + studentNo);
-		} else {
-			response.setContentType("text/html;charset=euc-kr");		
-			response.sendRedirect(request.getContextPath() +"/getStudentListAddr.csu?studentNo=" + studentNo);
-		
 		}
 	}
 }

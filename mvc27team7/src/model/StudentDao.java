@@ -31,7 +31,7 @@ public class StudentDao {
 		}
 	}
 	
-	public ArrayList<Student> selectStudentList(){
+	public ArrayList<Student> selectStudentList(int startRow , int pagePerRow){
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet rs = null;
@@ -39,7 +39,9 @@ public class StudentDao {
 		
 		try {
 			connection = DriverDao.DriverDbConnection();
-			statement=connection.prepareStatement("SELECT student_no AS studentNo, student_id AS studentId FROM student ORDER BY student_no ASC");
+			statement=connection.prepareStatement("SELECT student_no AS studentNo, student_id AS studentId FROM student ORDER BY student_no ASC limit ?,?");
+			statement.setInt(1, startRow);
+			statement.setInt(2, pagePerRow);
 			rs = statement.executeQuery();
 			
 			while (rs.next()) {
@@ -79,7 +81,7 @@ public class StudentDao {
 			
 		}
 	
-	public void deleteStudent(String studentNo) {
+	public void deleteStudent(int studentNo) {
 		Connection connection = null;
 		PreparedStatement statement = null;
 
@@ -87,7 +89,7 @@ public class StudentDao {
 			System.out.println("deleteStudent실행");
 			connection = DriverDao.DriverDbConnection();
 			statement = connection.prepareStatement("DELETE FROM student WHERE student_no=?");
-			statement.setString(1,studentNo);
+			statement.setInt(1,studentNo);
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -96,7 +98,29 @@ public class StudentDao {
 			if (statement != null) try { statement.close(); } catch(SQLException e) {}
 		}
 	}
-	
-	
+
+	public int countStudent() {
+		int count= 0;
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet rs = null;
+		
+		try{
+		
+			connection = DriverDao.DriverDbConnection();
+			statement = connection.prepareStatement("SELECT COUNT(*) FROM student");
+			rs = statement.executeQuery();
+			
+		if(rs.next()){
+			count=rs.getInt(1);
+		}
+		}catch(Exception ex){
+			System.out.println("getListCount 에러: " + ex);			
+		}finally{
+			if (connection != null) try { connection.close(); } catch(SQLException e) {}
+			if (statement != null) try { statement.close(); } catch(SQLException e) {}
+		}
+		return count;
+	}
 	
 }

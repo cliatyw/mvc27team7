@@ -17,20 +17,18 @@ public class ModifyStudentController extends HttpServlet {
 	private Student student;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int studentNo = Integer.parseInt(request.getParameter("studentNo"));
-		request.setAttribute("studentNo", studentNo);
+		request.setCharacterEncoding("UTF-8");
 		
-		request.getRequestDispatcher("/WEB-INF/views/modifyStudent.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/addStudent.jsp").forward(request, response);
 		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		
 		String studentId = request.getParameter("studentId");
 		String studentPw = request.getParameter("studentPw");
 		int studentNo =Integer.parseInt(request.getParameter("studentNo"));
-		System.out.println(studentId+"<===id");
-		System.out.println(studentPw+"<===pw");
-		System.out.println(studentNo+"<===no");
+
 		student = new Student();
 		student.setStudentNo(studentNo);
 		student.setStudentId(studentId);

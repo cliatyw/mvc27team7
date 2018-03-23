@@ -1,49 +1,31 @@
 <!-- [최상욱] -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>addTeacherAddr.jsp</title>
-</head>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+<jsp:include page="header.jsp"></jsp:include>
 	<script>
 		$(document).ready(function(){
-			$('#address').val("");
-
-			if($("#addressclick").val() === "addressclick"){
-				$("#address").click(function(){
-					alert("5개까지");
-					location.href='/mvc27team7/getStudentListAddr.csu?studentNo=<%=request.getAttribute("studentNo")%>';
-				});
-			}
+			$("#studentAddr").click(function(){
+				if($("#excess").val() === "excess"){
+					alert('더이상 추가 할 수 없습니다.');
+					location.href='/mvc27team7/getStudentAddrList.csu?studentNo=' + $("#studentNo").val();
+				}
+			});
+			
+			$("#btn").click(function(){
+				$("#addStudentAddr").submit();
+			});
 		});
 	</script>
-<body>
-	<%
-	request.setCharacterEncoding("euc-kr");
-	%>
-	<form action="<%=request.getContextPath()%>/addStudentAddr.csu" method="post">
-	<table class="table table-striped table-bordered table-hover">
-			<caption>StudentAddrList</caption>
-			<thead>
-				<tr>
-					<th>studentNo</th>
-					<th>address</th>
-				</tr>			
-			</thead>
-			<tbody>
-				<tr class="success">
-					<input type="hidden" id="addressclick" name="addressclick" value="<%= request.getAttribute("addressclick") %>">
-					<% System.out.println(request.getAttribute("addressclick"));%>
-					<td><input type="text" name="studentNo" value="<%=request.getAttribute("studentNo")%>"></td>
-					<td><input type="text" size="20" name="address" id="address" ></td>
-					<td><input type="submit" value="등록"></td>
-				</tr>				
-			</tbody>			
-	</table>
+	<h1 id="cover-heading">주소 추가</h1>
+	<form action="${pageContext.request.contextPath}/addStudentAddr.csu" method="post" role="form" id="addStudentAddr" >
+	<input type="hidden" id="studentNo" name="studentNo" value="${param.studentNo}">
+		<input type="hidden" id="excess" name="excess" value="${excess}">
+		<table class="table">
+			<tr>
+				<td>주소 추가</td>
+				<td><input type="text" id="studentAddr" name="studentAddr" class="form-control"></td>				
+			</tr>
+		</table>
+		<button id="btn" type="button" class="btn btn-lg btn-default">추가</button>
 	</form>
-</body>
-</html>
+<jsp:include page="footer.jsp"></jsp:include>

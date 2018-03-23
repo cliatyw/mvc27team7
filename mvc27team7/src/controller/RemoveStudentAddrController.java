@@ -7,19 +7,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.StudentAddr;
 import model.StudentAddrDao;
 
-@WebServlet("/studentAddrDelete.csu")
+@WebServlet("/removeStudentAddr.csu")
 public class RemoveStudentAddrController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getParameterValues("addrcheck"));
-		String studentNo = request.getParameter("studentNo");
-		String[] student_addr_no = request.getParameterValues("addrcheck");
+		request.setCharacterEncoding("UTF-8");
+		String[] student_addr_no = request.getParameterValues("getStudentAddrNo");
+		
+		int studentNo = Integer.parseInt(request.getParameter("studentNo"));
+		System.out.println(request.getParameter("studentNo"));
+		int checkListNo = 0;
+
+		StudentAddrDao dao = new StudentAddrDao();
 		for(int i=0; i<student_addr_no.length; i++){
-		      System.out.println(student_addr_no[i]);
-				StudentAddrDao dao = new StudentAddrDao();
-				dao.deleteStudent(student_addr_no[i]);
+			checkListNo = Integer.parseInt(student_addr_no[i]);
+			dao.deleteStudent(checkListNo);
+			
 	    }
-		response.sendRedirect(request.getContextPath()+"/getStudentListAddr.csu?studentNo=" + studentNo);
+		response.sendRedirect(request.getContextPath()+"/getStudentListAddr.csu?studentNo="+studentNo);
 	}
 }

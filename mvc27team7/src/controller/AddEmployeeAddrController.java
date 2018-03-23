@@ -23,11 +23,9 @@ public class AddEmployeeAddrController extends HttpServlet {
 		
 		employeeAddrDao = new EmployeeAddrDao();
 		int employeeNo = Integer.parseInt(request.getParameter("employeeNo"));
-		//5개 이상일시 request에 disabled을 셋팅한다.
+		//5개 이상일시 request에 excess을 셋팅한다.
 		if(employeeAddrDao.countEmployeeAddr(employeeNo)>=5) {
-			
 			request.setAttribute("excess", "excess");
-			
 		}
 		request.getRequestDispatcher("/WEB-INF/views/addEmployeeAddr.jsp").forward(request, response);
 	}

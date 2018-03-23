@@ -39,5 +39,19 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<!-- 페이지 처리 : 1페이지에선 이전 처음으로 안나오게, 마지막 페이지에선 다음 끝으로 안나오게 -->
+	<c:if test="${currentPage > 1}">
+		<a href="${pageContext.request.contextPath}/getEmployeeList.kks?currentPage=1">[처음으로]</a>
+	</c:if>
+	<c:if test="${currentPage > 1}">
+		<a href="${pageContext.request.contextPath}/getEmployeeList.kks?currentPage=${currentPage-1}">[이전]</a>
+	</c:if>
+	<c:if test="${currentPage < lastPage}">
+		<a href="${pageContext.request.contextPath}/getEmployeeList.kks?currentPage=${currentPage+1}">[다음]</a>
+	</c:if>
+	<c:if test="${currentPage < lastPage}">
+		<a href="${pageContext.request.contextPath}/getEmployeeList.kks?currentPage=${lastPage}">[끝으로]</a>
+	</c:if>
+	<br>
 	<button type="button" class="btn btn-lg btn-default" onclick="location.href='${pageContext.request.contextPath}/addEmployee.kks'">추가</button>
 <jsp:include page="footer.jsp"></jsp:include>

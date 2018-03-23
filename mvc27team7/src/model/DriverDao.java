@@ -7,9 +7,9 @@ import java.sql.SQLException;
 
 public class DriverDao {
 
-	/**
+	/*
 	 * db연결하는 매서드
-	 * @return connection
+	 * return connection
 	 */
 	public static Connection DriverDbConnection() {
 		Connection connection = null;

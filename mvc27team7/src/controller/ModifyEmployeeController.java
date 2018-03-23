@@ -34,5 +34,4 @@ public class ModifyEmployeeController extends HttpServlet {
 		
 		response.sendRedirect(request.getContextPath() + "/getEmployeeList.kks");
 	}
-
 }

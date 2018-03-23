@@ -1,3 +1,4 @@
+
 /*[김기성]*/
 package model;
 
@@ -37,17 +38,19 @@ public class EmployeeDao {
 	 * db에 있는 목록을 불러와 list로 리턴하는 매서드
 	 * return list
 	 */
-	public ArrayList<Employee> selectEmployeeList() {
+	public ArrayList<Employee> selectEmployeeList(int startRow, int pagePerRow) {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		
 		Connection connection = DriverDao.DriverDbConnection();
 		
 		ArrayList<Employee> list = new ArrayList<>();
-		String sql = "SELECT employee_no AS employeeNo, employee_id AS employeeId FROM employee ORDER BY employee_no ASC";
+		String sql = "SELECT employee_no AS employeeNo, employee_id AS employeeId FROM employee ORDER BY employee_no ASC LIMIT ?, ?";
 		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, startRow);
+			preparedStatement.setInt(2, pagePerRow);
 			resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()){
@@ -115,5 +118,35 @@ public class EmployeeDao {
 			if (preparedStatement != null) try { preparedStatement.close(); } catch(SQLException e) {}
 			if (connection != null) try { connection.close(); } catch(SQLException e) {}
 		}
+	}
+	/*
+	 * employee의 전체갯수를 세고 count로 리턴받는 매서드
+	 * return count
+	 */
+	public int countEmployee() {
+		Connection connection = DriverDao.DriverDbConnection();
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		String sql = "SELECT COUNT(*) FROM employee";
+		int count = 0;
+		
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()){
+				count = resultSet.getInt("COUNT(*)");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (preparedStatement != null) try { preparedStatement.close(); } catch(SQLException e) {}
+			if (connection != null) try { connection.close(); } catch(SQLException e) {}
+			if (resultSet != null) try { resultSet.close(); } catch(SQLException e) {}
+		}
+		return count;
 	}
 }

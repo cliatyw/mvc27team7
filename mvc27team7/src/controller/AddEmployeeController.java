@@ -42,5 +42,4 @@ public class AddEmployeeController extends HttpServlet {
 		
 		response.sendRedirect(request.getContextPath() + "/getEmployeeList.kks");
 	}
-
 }

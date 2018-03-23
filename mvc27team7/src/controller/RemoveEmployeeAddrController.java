@@ -31,5 +31,4 @@ public class RemoveEmployeeAddrController extends HttpServlet {
 		
 		response.sendRedirect(request.getContextPath() + "/getEmployeeAddrList.kks?employeeNo=" + employeeNo);
 	}
-
 }

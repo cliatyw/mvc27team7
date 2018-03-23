@@ -5,6 +5,7 @@ public class EmployeeAddr {
 	private int employeeAddrNo;
 	private int employeeNo;
 	private String address;
+	
 	public int getEmployeeAddrNo() {
 		return employeeAddrNo;
 	}
@@ -23,10 +24,10 @@ public class EmployeeAddr {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
 	@Override
 	public String toString() {
 		return "EmployeeAddr [employeeAddrNo=" + employeeAddrNo + ", employeeNo=" + employeeNo + ", address=" + address
 				+ "]";
 	}
-	
 }

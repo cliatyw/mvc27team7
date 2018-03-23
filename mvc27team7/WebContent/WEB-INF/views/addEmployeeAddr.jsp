@@ -11,10 +11,6 @@
 					location.href='/mvc27team7/getEmployeeAddrList.kks?employeeNo=' + $("#employeeNo").val();
 				}
 			});
-			
-			$("#btn").click(function(){
-				$("#addEmployeeAddr").submit();
-			});
 		});
 	</script>
 	<h1 id="cover-heading">주소 추가</h1>
@@ -27,6 +23,6 @@
 				<td><input type="text" id="employeeAddr" name="employeeAddr" class="form-control"></td>				
 			</tr>
 		</table>
-		<button id="btn" type="button" class="btn btn-lg btn-default">추가</button>
+		<button id="btn" type="submit" class="btn btn-lg btn-default">추가</button>
 	</form>
 <jsp:include page="footer.jsp"></jsp:include>

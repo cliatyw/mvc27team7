@@ -25,7 +25,6 @@ public class GetEmployeeAddrListController extends HttpServlet {
 		
 		//request에 no와 no에 해당하는 addr list를 세팅한다.
 		request.setAttribute("employeeNo", employeeNo);
-		
 		request.setAttribute("list", employeeAddrDao.selectEmployeeAddrList(employeeNo));
 		
 		request.getRequestDispatcher("/WEB-INF/views/getEmployeeAddrList.jsp").forward(request, response);

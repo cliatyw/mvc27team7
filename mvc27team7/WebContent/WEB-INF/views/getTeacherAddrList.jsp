@@ -1,13 +1,7 @@
 <!-- [김도희] -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>getTeacherAddrList.jsp</title>
-</head>
-<body>
+<jsp:include page="header.jsp"></jsp:include>
 	<form action="${pageContext.request.contextPath}/removeTeacherAddr.kdh" method="post">
 	<table border="1">
 		<thead>
@@ -30,5 +24,4 @@
 		</tbody>
 	</table>
 	<input type="submit" value="삭제">
-</body>
-</html>
+<jsp:include page="footer.jsp"></jsp:include>

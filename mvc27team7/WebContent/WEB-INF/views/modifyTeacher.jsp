@@ -1,12 +1,7 @@
 <!-- [김도희] -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <% request.setCharacterEncoding("euc-kr"); %>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>modifyTeacher.jsp</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<jsp:include page="header.jsp"></jsp:include>
 	<script>
 		$(document).ready(function(){
 			$("#btn").click(function(){
@@ -20,8 +15,6 @@
 			});
 		});
 	</script>
-</head>
-<body>
 	<h3>수정화면</h3>
 	<form id="form" action="${pageContext.request.contextPath}/modifyTeacher.kdh" method="post">
 		<table border="1">
@@ -42,5 +35,4 @@
 			</tbody>			
 		</table>
 	</form>
-</body>
-</html>
+<jsp:include page="footer.jsp"></jsp:include>

@@ -3,12 +3,7 @@
 <!-- java code를 taglib으로 사용 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% request.setCharacterEncoding("euc-kr"); %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>getTeacherList.jsp</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+<jsp:include page="header.jsp"></jsp:include>
 	<script>	
 		$(document).ready(function(){				
 			 var ccheck = $(".ccheck");
@@ -22,8 +17,6 @@
 			});					
 		});  
 	</script>
-</head>
-<body>
 	<h1>TeacherList</h1>
 	<table border="1">
 		<thead>
@@ -66,5 +59,4 @@
 		<a href="${pageContext.request.contextPath}/getTeacherList.kdh?currentPage=${currentPage+1}">다음</a>
 		<a href="${pageContext.request.contextPath}/getTeacherList.kdh?currentPage=${lastPage}">맨끝</a>
 	</c:if>
-</body>
-</html>
+<jsp:include page="footer.jsp"></jsp:include>

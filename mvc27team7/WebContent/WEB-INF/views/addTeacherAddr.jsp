@@ -1,12 +1,7 @@
 <!-- [김도희] -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <% request.setCharacterEncoding("euc-kr"); %>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>addTeacherAddr.jsp</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+<jsp:include page="header.jsp"></jsp:include>
 	<script>
 		$(document).ready(function(){
 			$("#addressId").click(function(){
@@ -17,8 +12,7 @@
 			});
 		});
 	</script>
-</head>
-<body>
+	<h1 id="cover-heading">주소 추가</h1>
 	<form action="${pageContext.request.contextPath}/addTeacherAddr.kdh" method="post">
 	<table border="1">
 			<thead>
@@ -36,5 +30,4 @@
 			</tbody>			
 	</table>
 	</form>
-</body>
-</html>
+<jsp:include page="footer.jsp"></jsp:include>

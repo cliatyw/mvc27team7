@@ -17,8 +17,8 @@
 			});					
 		});  
 	</script>
-	<h1>TeacherList</h1>
-	<table border="1">
+	<h1 class="cover-heading">TeacherList</h1>
+	<table class="table">
 		<thead>
 			<tr>
 				<th>teacher_no</th>
@@ -58,5 +58,6 @@
 	<c:if test="${currentPage<lastPage}">
 		<a href="${pageContext.request.contextPath}/getTeacherList.kdh?currentPage=${currentPage+1}">다음</a>
 		<a href="${pageContext.request.contextPath}/getTeacherList.kdh?currentPage=${lastPage}">맨끝</a>
-	</c:if>
+	</c:if><br>
+	<button type="button" class="btn btn-lg btn-default" onclick="location.href='${pageContext.request.contextPath}/addTeacher.kdh'">추가</button>
 <jsp:include page="footer.jsp"></jsp:include>

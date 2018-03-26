@@ -14,7 +14,7 @@
 	</script>
 	<h1 id="cover-heading">주소 추가</h1>
 	<form action="${pageContext.request.contextPath}/addTeacherAddr.kdh" method="post">
-	<table border="1">
+	<table class="table">
 			<thead>
 				<tr>
 					<th>address</th>
@@ -22,12 +22,12 @@
 			</thead>
 			<tbody>
 				<tr>
-					<input type=hidden name="count" id="countId" value="${count}">
-					<input type=hidden name="teacher_no" value="${param.send_no}">
-					<td><input type="text" id="addressId"size="20" name="address"></td>
-					<input type="submit" value="등록">
+					<input type=hidden name="count" id="countId" value="${count}" class="form-control">
+					<input type=hidden name="teacher_no" value="${param.send_no}" class="form-control">
+					<td><input type="text" id="addressId"size="20" name="address" class="form-control"></td>		
 				</tr>				
 			</tbody>			
 	</table>
+	<button id="btn" type="submit" class="btn btn-lg btn-default">추가</button>
 	</form>
 <jsp:include page="footer.jsp"></jsp:include>

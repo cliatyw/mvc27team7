@@ -16,7 +16,7 @@
 			});
 		});
 	</script>
-	<h1 class="cover-heading">addTeacher</h1>
+	<h1 id="head" class="cover-heading">addTeacher</h1>
 			<form id="form" method="post" action="${pageContext.request.contextPath}/addTeacher.kdh">
 					<table class="table">				       
 						<tr>
